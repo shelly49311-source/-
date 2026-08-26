@@ -12,11 +12,10 @@
 
 <title>流光聊天室</title>
 
-
 <style>
 
 /* ========================================
-   基本設定（淺色主題）
+   基本設定（黑色風格）
 ======================================== */
 
 * {
@@ -35,9 +34,9 @@ body {
     width: 100%;
     height: 100%;
 
-    background: #f0ede8;
+    background: #080808;
 
-    color: #222;
+    color: #ddd;
 
     font-family:
         "Courier New",
@@ -85,9 +84,9 @@ select:focus {
 
     max-height: 92vh;
 
-    background: #f5f2ee;
+    background: #080808;
 
-    border: 1px solid #ccc;
+    border: 1px solid #333;
 
     position: relative;
 
@@ -97,7 +96,7 @@ select:focus {
 
 
 /* ========================================
-   登入畫面（淺色）
+   登入畫面
 ======================================== */
 
 #login-screen {
@@ -110,7 +109,7 @@ select:focus {
     justify-content: center;
     align-items: center;
 
-    background: #f5f2ee;
+    background: #080808;
 
     position: relative;
 
@@ -128,18 +127,17 @@ select:focus {
     background:
         linear-gradient(
             135deg,
-            #ffffff 0%,
-            #f8f6f2 55%,
-            #f0ede8 100%
+            #1a1a1a 0%,
+            #111111 55%,
+            #0a0a0a 100%
         );
 
-    border: 1px solid #bbb;
+    border: 1px solid #444;
 
     padding: 45px 40px;
 
     box-shadow:
-        4px 4px 0 #ccc,
-        0 0 30px rgba(0, 0, 0, 0.06);
+        0 0 30px rgba(0, 0, 0, 0.8);
 
     position: relative;
 
@@ -149,7 +147,7 @@ select:focus {
 
 
 /* ========================================
-   掃描線（登入，淺色版）
+   CRT 掃描線
 ======================================== */
 
 .login-window::before {
@@ -165,8 +163,8 @@ select:focus {
     background:
         repeating-linear-gradient(
             to bottom,
-            rgba(0, 0, 0, 0.015) 0px,
-            rgba(0, 0, 0, 0.015) 1px,
+            rgba(255, 255, 255, 0.02) 0px,
+            rgba(255, 255, 255, 0.02) 1px,
             transparent 1px,
             transparent 4px
         );
@@ -177,7 +175,7 @@ select:focus {
 
 
 /* ========================================
-   Logo（登入）
+   Logo
 ======================================== */
 
 .logo-area {
@@ -208,11 +206,11 @@ select:focus {
     filter:
         drop-shadow(
             2px 2px 0
-            rgba(0, 168, 255, 0.20)
+            rgba(0, 168, 255, 0.25)
         )
         drop-shadow(
             -2px -1px 0
-            rgba(255, 45, 170, 0.12)
+            rgba(255, 45, 170, 0.18)
         );
 
 }
@@ -225,15 +223,15 @@ select:focus {
 
     letter-spacing: 0.18em;
 
-    color: #333;
+    color: #ddd;
 
     margin-top: 17px;
 
     font-weight: 700;
 
     text-shadow:
-        1px 0 rgba(0, 168, 255, 0.15),
-        -1px 0 rgba(255, 45, 170, 0.10);
+        1px 0 rgba(0, 168, 255, 0.25),
+        -1px 0 rgba(255, 45, 170, 0.18);
 
 }
 
@@ -241,7 +239,7 @@ select:focus {
 
     text-align: center;
 
-    color: #888;
+    color: #777;
 
     font-size: 12px;
 
@@ -251,14 +249,14 @@ select:focus {
 
 
 /* ========================================
-   登入標籤（淺色）
+   登入標籤
 ======================================== */
 
 .login-label {
 
     display: block;
 
-    color: #555;
+    color: #aaa;
 
     font-size: 12px;
 
@@ -274,7 +272,7 @@ select:focus {
 
 
 /* ========================================
-   登入輸入（淺色）
+   登入輸入
 ======================================== */
 
 .login-input {
@@ -285,11 +283,11 @@ select:focus {
 
     padding: 8px 10px;
 
-    background: #ffffff;
+    background: #1a1a1a;
 
-    border: 1px solid #bbb;
+    border: 1px solid #555;
 
-    color: #222;
+    color: #ddd;
 
     margin-bottom: 20px;
 
@@ -305,13 +303,21 @@ select:focus {
 
     box-shadow:
         0 0 0 2px
-        rgba(0, 0, 0, 0.06);
+        rgba(255, 255, 255, 0.06);
+
+}
+
+.login-input option {
+
+    background: #1a1a1a;
+
+    color: #ddd;
 
 }
 
 
 /* ========================================
-   登入按鈕（淺色）
+   登入按鈕
 ======================================== */
 
 .login-button,
@@ -336,16 +342,16 @@ select:focus {
     background:
         linear-gradient(
             180deg,
-            #ffffff,
-            #e8e4de
+            #333333,
+            #1a1a1a
         );
 
-    color: #333;
+    color: #ddd;
 
-    border: 1px solid #aaa;
+    border: 1px solid #666;
 
     box-shadow:
-        3px 3px 0 #ccc;
+        3px 3px 0 #222;
 
 }
 
@@ -354,7 +360,7 @@ select:focus {
     transform: translate(2px, 2px);
 
     box-shadow:
-        1px 1px 0 #ccc;
+        1px 1px 0 #222;
 
 }
 
@@ -365,16 +371,16 @@ select:focus {
     background:
         linear-gradient(
             180deg,
-            #f5f2ee,
-            #e0dcd6
+            #2a2a2a,
+            #151515
         );
 
-    color: #555;
+    color: #aaa;
 
-    border: 1px solid #bbb;
+    border: 1px solid #555;
 
     box-shadow:
-        2px 2px 0 #ccc;
+        2px 2px 0 #333;
 
 }
 
@@ -383,13 +389,13 @@ select:focus {
     transform: translate(1px, 1px);
 
     box-shadow:
-        1px 1px 0 #ccc;
+        1px 1px 0 #333;
 
 }
 
 
 /* ========================================
-   登入分隔（淺色）
+   登入分隔
 ======================================== */
 
 .login-divider {
@@ -417,13 +423,13 @@ select:focus {
 
     height: 1px;
 
-    background: #ccc;
+    background: #555;
 
 }
 
 .login-divider span {
 
-    color: #999;
+    color: #666;
 
     font-size: 11px;
 
@@ -433,7 +439,7 @@ select:focus {
 
 
 /* ========================================
-   登入提示（淺色）
+   登入提示
 ======================================== */
 
 .login-notice {
@@ -442,11 +448,11 @@ select:focus {
 
     padding-top: 15px;
 
-    border-top: 1px solid #ddd;
+    border-top: 1px solid #333;
 
     text-align: center;
 
-    color: #999;
+    color: #666;
 
     font-size: 11px;
 
@@ -465,7 +471,7 @@ select:focus {
 
 
 /* ========================================
-   聊天室（淺色）
+   聊天室
 ======================================== */
 
 #chat-screen {
@@ -477,15 +483,15 @@ select:focus {
 
     flex-direction: column;
 
-    background: #f5f2ee;
+    background: #080808;
 
-    color: #222;
+    color: #ddd;
 
 }
 
 
 /* ========================================
-   上方（淺色）
+   上方
 ======================================== */
 
 .top-bar {
@@ -494,7 +500,7 @@ select:focus {
 
     flex-shrink: 0;
 
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #333;
 
     display: flex;
 
@@ -504,7 +510,7 @@ select:focus {
 
     padding: 0 18px;
 
-    background: #faf8f5;
+    background: #0d0d0d;
 
 }
 
@@ -532,7 +538,7 @@ select:focus {
 
 .user-status {
 
-    color: #555;
+    color: #999;
 
     font-size: 12px;
 
@@ -540,29 +546,27 @@ select:focus {
 
 .user-name {
 
-    color: #222;
+    color: #fff;
 
 }
 
+/* 計數器 - 無框線，只顯示文字 */
 .visitor-counter {
-    background: #ffffff;
-    border: 1px solid #ddd;
-    padding: 4px 12px;
-    border-radius: 3px;
+    color: #aaa;
     font-size: 12px;
-    color: #555;
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 4px;
 }
 
-.visitor-counter img {
-    vertical-align: middle;
+.visitor-counter span {
+    color: #ffd84d;
+    font-weight: bold;
 }
 
 
 /* ========================================
-   主體（淺色）
+   主體
 ======================================== */
 
 .chat-layout {
@@ -587,13 +591,13 @@ select:focus {
 
     flex-direction: column;
 
-    border-right: 1px solid #ddd;
+    border-right: 1px solid #333;
 
 }
 
 
 /* ========================================
-   聊天室標題（淺色）
+   聊天室標題
 ======================================== */
 
 .room-header {
@@ -602,7 +606,7 @@ select:focus {
 
     flex-shrink: 0;
 
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #333;
 
     padding: 10px 16px;
 
@@ -612,13 +616,13 @@ select:focus {
 
     justify-content: space-between;
 
-    background: #faf8f5;
+    background: #0d0d0d;
 
 }
 
 .room-name {
 
-    color: #333;
+    color: #eee;
 
     font-size: 16px;
 
@@ -628,7 +632,7 @@ select:focus {
 
 .room-description {
 
-    color: #888;
+    color: #666;
 
     font-size: 11px;
 
@@ -636,7 +640,7 @@ select:focus {
 
 
 /* ========================================
-   訊息區（淺色）
+   訊息區
 ======================================== */
 
 .messages {
@@ -655,7 +659,7 @@ select:focus {
 
     overscroll-behavior: contain;
 
-    background: #fcfaf7;
+    background: #0a0a0a;
 
 }
 
@@ -673,7 +677,7 @@ select:focus {
 
     font-size: 12px;
 
-    color: #333;
+    color: #fff;
 
     margin-bottom: 3px;
 
@@ -683,7 +687,7 @@ select:focus {
 
 .message-user {
 
-    color: #222;
+    color: #fff;
 
     font-weight: 600;
 
@@ -691,7 +695,7 @@ select:focus {
 
 .message-target-word {
 
-    color: #7a5ea7;
+    color: #a98bea;
 
     font-weight: 600;
 
@@ -699,7 +703,7 @@ select:focus {
 
 .message-target-name {
 
-    color: #222;
+    color: #fff;
 
     font-weight: 600;
 
@@ -717,7 +721,7 @@ select:focus {
 
 .message-private {
 
-    color: #b08870;
+    color: #c5ab9f;
 
     font-weight: 600;
 
@@ -725,7 +729,7 @@ select:focus {
 
 .message-system {
 
-    color: #2d8f4a;
+    color: #66cc66;
 
     font-size: 12px;
 
@@ -739,18 +743,18 @@ select:focus {
 
 
 /* ========================================
-   輸入區（淺色）
+   輸入區
 ======================================== */
 
 .input-area {
 
     flex-shrink: 0;
 
-    border-top: 1px solid #ddd;
+    border-top: 1px solid #333;
 
     padding: 10px;
 
-    background: #faf8f5;
+    background: #0d0d0d;
 
 }
 
@@ -772,11 +776,11 @@ select:focus {
 
     height: 28px;
 
-    background: #ffffff;
+    background: #111;
 
-    border: 1px solid #ddd;
+    border: 1px solid #444;
 
-    color: #555;
+    color: #aaa;
 
     cursor: pointer;
 
@@ -786,13 +790,13 @@ select:focus {
 
 .tool-button:hover {
 
-    background: #f0ede8;
+    background: #1a1a1a;
 
 }
 
 .color-label {
 
-    color: #555;
+    color: #aaa;
 
     font-size: 11px;
 
@@ -808,11 +812,11 @@ select:focus {
 
     max-width: 150px;
 
-    background: #ffffff;
+    background: #111;
 
-    border: 1px solid #ddd;
+    border: 1px solid #444;
 
-    color: #333;
+    color: #ddd;
 
     padding: 0 5px;
 
@@ -836,13 +840,13 @@ select:focus {
 
     height: 42px;
 
-    background: #ffffff;
+    background: #050505;
 
-    border: 1px solid #ddd;
+    border: 1px solid #444;
 
     padding: 8px 10px;
 
-    color: #222;
+    color: #ffd84d;
 
     font-size: 14px;
 
@@ -852,7 +856,7 @@ select:focus {
 
 .message-input:focus {
 
-    border-color: #888;
+    border-color: #777;
 
 }
 
@@ -862,11 +866,11 @@ select:focus {
 
     flex-shrink: 0;
 
-    background: #e8e4de;
+    background: #1a1a1a;
 
-    color: #333;
+    color: #ccc;
 
-    border: 1px solid #ccc;
+    border: 1px solid #555;
 
     cursor: pointer;
 
@@ -876,13 +880,13 @@ select:focus {
 
 .send-button:hover {
 
-    background: #ddd8d0;
+    background: #252525;
 
 }
 
 
 /* ========================================
-   成員區（淺色）
+   成員區
 ======================================== */
 
 .member-panel {
@@ -897,28 +901,28 @@ select:focus {
 
     min-height: 0;
 
-    background: #faf8f5;
+    background: #0d0d0d;
 
 }
 
 
 /* ========================================
-   管理員（淺色）
+   管理員（無分隔線圖片）
 ======================================== */
 
 .admin-panel {
 
     flex-shrink: 0;
 
-    border-bottom: none;
+    border-bottom: 1px solid #333;
 
-    padding: 10px 12px 6px 12px;
+    padding: 10px 12px;
 
 }
 
 .admin-title {
 
-    color: #888;
+    color: #555;
 
     font-size: 10px;
 
@@ -956,37 +960,19 @@ select:focus {
 
 .admin-name {
 
-    color: #333;
+    color: #fff;
 
 }
 
 .admin-name.offline {
 
-    color: #aaa;
+    color: #555;
 
 }
 
 
 /* ========================================
-   分隔線（動態圖）
-======================================== */
-
-.admin-divider {
-    text-align: center;
-    padding: 4px 0 8px 0;
-    border-bottom: 1px solid #ddd;
-    margin-bottom: 4px;
-}
-
-.admin-divider img {
-    width: 60px;
-    height: auto;
-    opacity: 0.5;
-}
-
-
-/* ========================================
-   成員標題（淺色）
+   成員標題
 ======================================== */
 
 .member-header {
@@ -995,7 +981,7 @@ select:focus {
 
     flex-shrink: 0;
 
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #333;
 
     display: flex;
 
@@ -1031,7 +1017,7 @@ select:focus {
 
 .member-group-title {
 
-    color: #888;
+    color: #555;
 
     font-size: 10px;
 
@@ -1051,7 +1037,7 @@ select:focus {
 
     font-size: 12px;
 
-    color: #333;
+    color: #ddd;
 
     cursor: pointer;
 
@@ -1061,7 +1047,7 @@ select:focus {
 
 .member:hover {
 
-    background: #f0ede8;
+    background: #151515;
 
 }
 
@@ -1075,7 +1061,7 @@ select:focus {
 
     border-radius: 50%;
 
-    border: 1px solid #ccc;
+    border: 1px solid #555;
 
 }
 
@@ -1093,14 +1079,14 @@ select:focus {
 
 
 /* ========================================
-   聊天室切換（淺色）
+   聊天室切換
 ======================================== */
 
 .room-switcher {
 
     flex-shrink: 0;
 
-    border-top: 1px solid #ddd;
+    border-top: 1px solid #333;
 
     padding: 10px;
 
@@ -1110,7 +1096,7 @@ select:focus {
 
     font-size: 10px;
 
-    color: #888;
+    color: #555;
 
     margin-bottom: 7px;
 
@@ -1130,11 +1116,11 @@ select:focus {
 
     height: 28px;
 
-    background: #f5f2ee;
+    background: #0d0d0d;
 
-    color: #888;
+    color: #777;
 
-    border: 1px solid #ddd;
+    border: 1px solid #333;
 
     cursor: pointer;
 
@@ -1144,23 +1130,23 @@ select:focus {
 
 .room-button.active {
 
-    color: #333;
+    color: #eee;
 
-    border-color: #aaa;
+    border-color: #777;
 
-    background: #e8e4de;
+    background: #1a1a1a;
 
 }
 
 .room-button:hover {
 
-    background: #ede9e4;
+    background: #151515;
 
 }
 
 
 /* ========================================
-   捲軸（淺色）
+   捲軸
 ======================================== */
 
 ::-webkit-scrollbar {
@@ -1173,19 +1159,19 @@ select:focus {
 
 ::-webkit-scrollbar-track {
 
-    background: #f5f2ee;
+    background: #080808;
 
 }
 
 ::-webkit-scrollbar-thumb {
 
-    background: #ccc;
+    background: #333;
 
 }
 
 ::-webkit-scrollbar-thumb:hover {
 
-    background: #bbb;
+    background: #444;
 
 }
 
@@ -1255,7 +1241,7 @@ select:focus {
 
         height: auto;
 
-        border-right: 1px solid #ddd;
+        border-right: 1px solid #333;
 
     }
 
@@ -1357,7 +1343,7 @@ select:focus {
 
         border-top: none;
 
-        border-left: 1px solid #ddd;
+        border-left: 1px solid #333;
 
     }
 
@@ -1401,10 +1387,6 @@ select:focus {
 
         height: 14px;
 
-    }
-
-    .admin-divider img {
-        width: 40px;
     }
 
     .member-header {
@@ -1501,7 +1483,7 @@ select:focus {
 
         font-size: 9px;
 
-        color: #888;
+        color: #555;
 
         margin-bottom: 4px;
 
@@ -1555,7 +1537,6 @@ select:focus {
 
     .visitor-counter {
         font-size: 10px;
-        padding: 2px 8px;
     }
 
     .user-status {
@@ -1635,12 +1616,6 @@ select:focus {
 
     .visitor-counter {
         font-size: 8px;
-        padding: 2px 5px;
-    }
-
-    .visitor-counter img {
-        max-width: 50px;
-        height: auto;
     }
 
     .user-status {
@@ -1848,15 +1823,8 @@ select:focus {
 
         <div class="top-right">
 
-            <div class="user-status">
-                <span id="display-name"></span>
-            </div>
-
             <div class="visitor-counter">
-                <!-- FC2計數器 開始 -->
-                <script language="javascript" type="text/javascript" src="//counter1.fc2.com/counter.php?id=41163366&main=1"></script>
-                <noscript><img src="//counter1.fc2.com/counter_img.php?id=41163366&main=1" /></noscript>
-                <!-- FC2計數器 結束 -->
+                🧸 訪客：<span id="visitor-count-display">0</span>
             </div>
 
         </div>
@@ -2053,17 +2021,6 @@ select:focus {
                 class="admin-panel"
                 id="admin-panel"
             ></div>
-
-            <!-- =================================
-                 分隔線（動態圖）
-            ================================== -->
-
-            <div class="admin-divider">
-                <img
-                    src="https://raw.githubusercontent.com/shelly49311-source/-/refs/heads/main/gummybear_lychee.gif"
-                    alt="分隔線"
-                >
-            </div>
 
 
             <div class="member-header">
@@ -3655,15 +3612,16 @@ function enterGuest() {
         "chat-screen"
     ).style.display = "flex";
 
-    document.getElementById(
-        "display-name"
-    ).textContent =
-        "訪客_" + currentUser;
+    // 訪客計數器 +1
+    let visitorCount = parseInt(localStorage.getItem('visitorCount') || '0');
+    visitorCount++;
+    localStorage.setItem('visitorCount', visitorCount);
+    document.getElementById('visitor-count-display').textContent = visitorCount;
 
     // 顯示歡迎訊息
     const welcomeMessage = {
         type: "system",
-        text: "歡迎 訪客_" + currentUser + " 進入聊天室"
+        text: "歡迎 " + currentUser + " 進入聊天室"
     };
 
     // 加入當前房間的訊息中
@@ -3681,6 +3639,10 @@ function enterGuest() {
 function initializeRooms() {
 
     currentRoom = 1;
+
+    // 初始化計數器顯示
+    let visitorCount = parseInt(localStorage.getItem('visitorCount') || '0');
+    document.getElementById('visitor-count-display').textContent = visitorCount;
 
     for (
         let roomNumber = 1;
@@ -3838,7 +3800,7 @@ function createMessageElement(
             message.text;
 
         text.style.color =
-            "#2d8f4a";
+            "#66cc66";
 
         text.style.textAlign =
             "center";
@@ -3960,7 +3922,7 @@ function createMessageElement(
 
     text.style.color =
         message.color ||
-        "#222";
+        "#ddd";
 
     element.appendChild(
         meta
@@ -4347,7 +4309,7 @@ function sendMessage() {
     const playerMessage = {
 
         user:
-            "訪客_" + currentUser,
+            currentUser,
 
         text:
             messageText,
@@ -4930,6 +4892,13 @@ document
             "text-color"
         )
         .value;
+
+
+// 頁面載入時初始化計數器
+document.addEventListener('DOMContentLoaded', function() {
+    let visitorCount = parseInt(localStorage.getItem('visitorCount') || '0');
+    document.getElementById('visitor-count-display').textContent = visitorCount;
+});
 
 
 </script>
