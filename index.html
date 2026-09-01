@@ -14,9 +14,6 @@
 
 <style>
 
-/* ========================================
-   基本設定（黑色風格）
-======================================== */
 
 * {
 
@@ -72,9 +69,6 @@ select:focus {
 }
 
 
-/* ========================================
-   電腦版網站
-======================================== */
 
 #site {
 
@@ -95,9 +89,6 @@ select:focus {
 }
 
 
-/* ========================================
-   登入畫面
-======================================== */
 
 #login-screen {
 
@@ -536,32 +527,31 @@ select:focus {
     gap: 16px;
 }
 
-.user-status {
-
-    color: #999;
-
-    font-size: 12px;
-
-}
-
-.user-name {
-
-    color: #fff;
-
-}
-
-/* 計數器 - 無框線，只顯示文字 */
-.visitor-counter {
-    color: #aaa;
-    font-size: 12px;
+.room-selector {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 8px;
 }
 
-.visitor-counter span {
-    color: #ffd84d;
-    font-weight: bold;
+.room-selector label {
+    color: #888;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.room-selector select {
+    background: #111;
+    border: 1px solid #444;
+    color: #ddd;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.room-selector select:focus {
+    border-color: #777;
 }
 
 
@@ -592,49 +582,6 @@ select:focus {
     flex-direction: column;
 
     border-right: 1px solid #333;
-
-}
-
-
-/* ========================================
-   聊天室標題
-======================================== */
-
-.room-header {
-
-    height: 55px;
-
-    flex-shrink: 0;
-
-    border-bottom: 1px solid #333;
-
-    padding: 10px 16px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    background: #0d0d0d;
-
-}
-
-.room-name {
-
-    color: #eee;
-
-    font-size: 16px;
-
-    font-weight: 600;
-
-}
-
-.room-description {
-
-    color: #666;
-
-    font-size: 11px;
 
 }
 
@@ -683,6 +630,12 @@ select:focus {
 
     font-weight: 600;
 
+    display: flex;
+
+    align-items: center;
+
+    gap: 4px;
+
 }
 
 .message-user {
@@ -719,6 +672,57 @@ select:focus {
 
 }
 
+.message-time {
+
+    color: #666;
+
+    font-size: 10px;
+
+    font-weight: normal;
+
+    margin-left: 6px;
+
+    white-space: nowrap;
+}
+
+.message-admin-gif {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    flex-shrink: 0;
+    margin-right: 2px;
+    vertical-align: middle;
+}
+
+/* 悄悄話專用樣式 */
+.whisper-label {
+    font-weight: bold;
+    color: #ff6b6b;
+}
+
+.whisper-arrow {
+    color: #888;
+    margin: 0 4px;
+}
+
+.whisper-target {
+    color: #fff;
+}
+
+.welcome-name {
+
+    color: #fff;
+
+    text-decoration: underline;
+
+    text-underline-offset: 2px;
+}
+
+.welcome-text {
+
+    color: #888;
+}
+
 .message-private {
 
     color: #c5ab9f;
@@ -740,7 +744,6 @@ select:focus {
     margin: 10px 0;
 
 }
-
 
 /* ========================================
    輸入區
@@ -767,6 +770,8 @@ select:focus {
     gap: 6px;
 
     margin-bottom: 8px;
+
+    flex-wrap: wrap;
 
 }
 
@@ -822,6 +827,49 @@ select:focus {
 
     font-weight: 600;
 
+}
+
+.whisper-label-input {
+    color: #aaa;
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+.whisper-target-input {
+    height: 28px;
+    width: 80px;
+    background: #111;
+    border: 1px solid #444;
+    color: #ddd;
+    padding: 0 5px;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 3px;
+}
+
+.whisper-target-input:focus {
+    border-color: #ff6b6b;
+}
+
+.whisper-target-input.active {
+    border-color: #ff6b6b;
+    box-shadow: 0 0 6px rgba(255, 107, 107, 0.2);
+}
+
+.whisper-clear-btn {
+    height: 28px;
+    background: #1a1a1a;
+    border: 1px solid #444;
+    color: #666;
+    padding: 0 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 11px;
+}
+
+.whisper-clear-btn:hover {
+    color: #aaa;
+    border-color: #666;
 }
 
 .input-row {
@@ -907,7 +955,7 @@ select:focus {
 
 
 /* ========================================
-   管理員（無分隔線圖片）
+   管理員
 ======================================== */
 
 .admin-panel {
@@ -949,11 +997,8 @@ select:focus {
 .admin-gif {
 
     width: 18px;
-
     height: 18px;
-
     object-fit: contain;
-
     flex-shrink: 0;
 
 }
@@ -1074,73 +1119,6 @@ select:focus {
 .status-offline {
 
     background: transparent;
-
-}
-
-
-/* ========================================
-   聊天室切換
-======================================== */
-
-.room-switcher {
-
-    flex-shrink: 0;
-
-    border-top: 1px solid #333;
-
-    padding: 10px;
-
-}
-
-.room-switcher-title {
-
-    font-size: 10px;
-
-    color: #555;
-
-    margin-bottom: 7px;
-
-}
-
-.room-buttons {
-
-    display: flex;
-
-    gap: 5px;
-
-}
-
-.room-button {
-
-    flex: 1;
-
-    height: 28px;
-
-    background: #0d0d0d;
-
-    color: #777;
-
-    border: 1px solid #333;
-
-    cursor: pointer;
-
-    font-weight: 600;
-
-}
-
-.room-button.active {
-
-    color: #eee;
-
-    border-color: #777;
-
-    background: #1a1a1a;
-
-}
-
-.room-button:hover {
-
-    background: #151515;
 
 }
 
@@ -1317,6 +1295,23 @@ select:focus {
 
     }
 
+    .whisper-label-input {
+        flex-shrink: 0;
+        font-size: 10px;
+    }
+
+    .whisper-target-input {
+        flex-shrink: 0;
+        width: 60px;
+        font-size: 10px;
+    }
+
+    .whisper-clear-btn {
+        flex-shrink: 0;
+        font-size: 10px;
+        padding: 0 5px;
+    }
+
     .message-input {
 
         height: 40px;
@@ -1469,40 +1464,6 @@ select:focus {
 
     }
 
-    .room-switcher {
-
-        height: auto;
-
-        padding: 6px 8px;
-
-    }
-
-    .room-switcher-title {
-
-        display: block;
-
-        font-size: 9px;
-
-        color: #555;
-
-        margin-bottom: 4px;
-
-    }
-
-    .room-buttons {
-
-        height: auto;
-
-    }
-
-    .room-button {
-
-        height: 24px;
-
-        font-size: 10px;
-
-    }
-
     .login-window {
 
         width: 86vw;
@@ -1535,12 +1496,13 @@ select:focus {
         gap: 8px;
     }
 
-    .visitor-counter {
+    .room-selector label {
         font-size: 10px;
     }
 
-    .user-status {
-        font-size: 10px;
+    .room-selector select {
+        font-size: 11px;
+        padding: 3px 6px;
     }
 
 }
@@ -1562,6 +1524,10 @@ select:focus {
 
         font-size: 13px;
 
+    }
+
+    .message-time {
+        font-size: 9px;
     }
 
     .message-meta {
@@ -1592,6 +1558,20 @@ select:focus {
 
     }
 
+    .whisper-label-input {
+        font-size: 9px;
+    }
+
+    .whisper-target-input {
+        width: 50px;
+        font-size: 9px;
+    }
+
+    .whisper-clear-btn {
+        font-size: 9px;
+        padding: 0 4px;
+    }
+
     .send-button {
 
         width: 55px;
@@ -1614,12 +1594,13 @@ select:focus {
         gap: 5px;
     }
 
-    .visitor-counter {
-        font-size: 8px;
+    .room-selector label {
+        font-size: 9px;
     }
 
-    .user-status {
-        font-size: 9px;
+    .room-selector select {
+        font-size: 10px;
+        padding: 2px 5px;
     }
 
 }
@@ -1720,7 +1701,7 @@ select:focus {
 
 
     <!-- ====================================
-         訪客登入
+         訪客登入（已移除性別選項）
     ==================================== -->
 
     <div
@@ -1755,31 +1736,6 @@ select:focus {
             maxlength="20"
             placeholder="輸入名稱"
         >
-
-
-        <label class="login-label">
-            性別
-        </label>
-
-
-        <select
-            class="login-input"
-            id="guest-gender"
-        >
-
-            <option value="">
-                請選擇
-            </option>
-
-            <option value="male">
-                男
-            </option>
-
-            <option value="female">
-                女
-            </option>
-
-        </select>
 
 
         <button
@@ -1823,8 +1779,13 @@ select:focus {
 
         <div class="top-right">
 
-            <div class="visitor-counter">
-                🧸 訪客：<span id="visitor-count-display">0</span>
+            <div class="room-selector">
+                <label for="roomSelect">選擇聊天室</label>
+                <select id="roomSelect">
+                    <option value="1">日不落</option>
+                    <option value="2">夜不息</option>
+                    <option value="3">人不孤</option>
+                </select>
             </div>
 
         </div>
@@ -1841,30 +1802,6 @@ select:focus {
 
         <div class="chat-main">
 
-
-            <div class="room-header">
-
-                <div>
-
-                    <div
-                        class="room-name"
-                        id="room-name"
-                    >
-                        聊天區
-                    </div>
-
-                    <div
-                        class="room-description"
-                        id="room-description"
-                    >
-                        綜合聊天
-                    </div>
-
-                </div>
-
-            </div>
-
-
             <div
                 class="messages"
                 id="messages"
@@ -1880,43 +1817,9 @@ select:focus {
 
                 <div class="tools">
 
-
-                    <button
-                        class="tool-button"
-                        onclick="insertEmoji(':)')"
-                    >
-                        :)
-                    </button>
-
-
-                    <button
-                        class="tool-button"
-                        onclick="insertEmoji(':D')"
-                    >
-                        :D
-                    </button>
-
-
-                    <button
-                        class="tool-button"
-                        onclick="insertEmoji('XD')"
-                    >
-                        XD
-                    </button>
-
-
-                    <button
-                        class="tool-button"
-                        onclick="insertEmoji('<3')"
-                    >
-                        ♥
-                    </button>
-
-
                     <span class="color-label">
                         文字顏色：
                     </span>
-
 
                     <select
                         class="color-select"
@@ -1974,6 +1877,24 @@ select:focus {
 
                     </select>
 
+                    <span class="whisper-label-input">對象：</span>
+
+                    <input
+                        class="whisper-target-input"
+                        id="whisper-target"
+                        type="text"
+                        maxlength="20"
+                        placeholder="名稱"
+                        autocomplete="off"
+                    >
+
+                    <button
+                        class="whisper-clear-btn"
+                        id="whisper-clear-btn"
+                        title="清除對象"
+                    >
+                        ✕
+                    </button>
 
                 </div>
 
@@ -2034,47 +1955,6 @@ select:focus {
             ></div>
 
 
-            <div class="room-switcher">
-
-
-                <div class="room-switcher-title">
-                    聊天室
-                </div>
-
-
-                <div class="room-buttons">
-
-
-                    <button
-                        class="room-button active"
-                        onclick="changeRoom(1)"
-                    >
-                        01
-                    </button>
-
-
-                    <button
-                        class="room-button"
-                        onclick="changeRoom(2)"
-                    >
-                        02
-                    </button>
-
-
-                    <button
-                        class="room-button"
-                        onclick="changeRoom(3)"
-                    >
-                        03
-                    </button>
-
-
-                </div>
-
-
-            </div>
-
-
         </div>
 
 
@@ -2091,12 +1971,10 @@ select:focus {
 
 
 /* ========================================
-   玩家資料
+   玩家資料（移除性別）
 ======================================== */
 
 let currentUser = "";
-
-let currentGender = "";
 
 let currentRoom = 1;
 
@@ -2117,7 +1995,7 @@ const roomMessages = {
 
 
 /* ========================================
-   自動聊天已使用資料
+   自動聊天已使用資料（不重置，播完即安靜）
 ======================================== */
 
 const shownAutomaticMessages = {
@@ -2138,7 +2016,7 @@ const adminGif =
 
 
 /* ========================================
-   管理員資料
+   管理員資料（按聊天室獨立）
 ======================================== */
 
 const administrators = {
@@ -2146,13 +2024,13 @@ const administrators = {
     1: [
 
         {
-            name: "阿光",
+            name: "小麥",
             online: true
         },
 
         {
-            name: "小麥",
-            online: true
+            name: "阿光",
+            online: false
         }
 
     ],
@@ -2160,18 +2038,18 @@ const administrators = {
     2: [
 
         {
-            name: "夜",
-            online: true
-        },
-
-        {
             name: "工讀生",
             online: true
         },
 
         {
+            name: "夜",
+            online: false
+        },
+
+        {
             name: "寧安",
-            online: true
+            online: false
         }
 
     ],
@@ -2184,13 +2062,8 @@ const administrators = {
         },
 
         {
-            name: "阿守",
-            online: true
-        },
-
-        {
             name: "島輝",
-            online: true
+            online: false
         }
 
     ]
@@ -2199,7 +2072,7 @@ const administrators = {
 
 
 /* ========================================
-   訪客資料
+   訪客資料（按聊天室獨立）
 ======================================== */
 
 const visitors = {
@@ -2225,7 +2098,57 @@ const visitors = {
         "老闆叫我來",
         "等等要吃啥",
         "安安你好",
-        "我就來看看"
+        "我就來看看",
+        "尊里魔",
+        "著晃",
+        "66559",
+        "研究精神",
+        "胖胖聊聊天~",
+        "蚂",
+        "71130",
+        "當中",
+        "又下雨了",
+        "資優班",
+        "午後雨",
+        "175",
+        "咖哩雞腿蓋飯",
+        "單親1965新北",
+        "炸控",
+        "愛是一個字",
+        "陪伴~~~",
+        "桃圈男~",
+        "斯文帥",
+        "情人夢",
+        "唐宫",
+        "簡單的抱",
+        "絲質睡衣",
+        "老頭童AK",
+        "地平線",
+        "樱桃大丸子-",
+        "没事請多喝水",
+        "2388",
+        "南部~鴻",
+        "看新房",
+        "天肉肉",
+        "艾爾",
+        "想你的夜~",
+        "超愛虎爺公",
+        "海走走",
+        "轉换心情",
+        "台中工人",
+        "斯扣其",
+        "芯媛",
+        "gooddays",
+        "馬尾灰背心34",
+        "~語過添情~",
+        "熊大叔",
+        "南部的",
+        "冷醒",
+        "晚上時光",
+        "有36",
+        "小香菇",
+        "心落雪",
+        "goodt"
 
     ],
 
@@ -2242,40 +2165,17 @@ const visitors = {
         "吃宵夜",
         "阿宅",
         "賺錢找我",
-        "月底求生存",
-        "下個月發財",
-        "保證獲利",
-        "無腦多",
-        "信我得永生",
-        "尾牙抽大獎",
-        "我是路人",
-        "我不重要",
-        "隨便看看"
+        "月底求生存"
 
     ],
 
     3: [
 
-        "想不到名字",
-        "隨便打的",
-        "帳號被盜了",
-        "懷舊患者",
-        "過氣老人",
-        "潛水客",
-        "老司機",
-        "只會潛水",
         "路過",
         "我來看看",
-        "長輩圖支援",
-        "幫我投票",
-        "加賴領貼圖",
-        "這個帳號是買的",
-        "我不是機器人",
-        "好說好說",
-        "見笑了",
-        "多多指教",
-        "你好啊",
-        "來晚了"
+        "過氣老人",
+        "潛水客",
+        "老司機"
 
     ]
 
@@ -2283,34 +2183,50 @@ const visitors = {
 
 
 /* ========================================
-   聊天室設定
+   線上訪客（每個聊天室獨立）
+======================================== */
+
+const onlineVisitors = {
+
+    1: [],
+    2: [],
+    3: []
+
+};
+
+
+/* ========================================
+   訪客進出計時器
+======================================== */
+
+let visitorTimers = {
+
+    1: null,
+    2: null,
+    3: null
+
+};
+
+
+/* ========================================
+   聊天室設定（成員按聊天室獨立）
 ======================================== */
 
 const rooms = {
 
     1: {
 
-        name: "聊天區",
+        name: "日不落",
 
         description: "綜合聊天",
 
         members: [
 
-            ["小麥", true],
             ["阿哲", true],
             ["檸檬汽水", true],
             ["颱風天", true],
             ["左邊轉彎", true],
-            ["七喜", true],
-            ["芒果冰", false],
-            ["不想上班", false],
-            ["白紙", false],
-            ["小海", false],
-            ["阿葵", false],
-            ["紙飛機", false],
-            ["雨天", false],
-            ["MOMO", false],
-            ["老地方", false]
+            ["七喜", true]
 
         ]
 
@@ -2319,7 +2235,7 @@ const rooms = {
 
     2: {
 
-        name: "閒聊區",
+        name: "夜不息",
 
         description: "自由交流",
 
@@ -2328,15 +2244,7 @@ const rooms = {
             ["雨天", true],
             ["MOMO", true],
             ["小海", true],
-            ["橘子汽水", true],
-            ["老地方", false],
-            ["白紙", false],
-            ["七喜", false],
-            ["海風", false],
-            ["小丸子", false],
-            ["黑咖啡", false],
-            ["阿哲", false],
-            ["不想上班", false]
+            ["橘子汽水", true]
 
         ]
 
@@ -2345,22 +2253,14 @@ const rooms = {
 
     3: {
 
-        name: "交流區",
+        name: "人不孤",
 
         description: "會員交流",
 
         members: [
 
-            ["阿哲", true],
-            ["小麥", true],
             ["藍色星期天", true],
-            ["阿葵", true],
-            ["左邊轉彎", false],
-            ["颱風天", false],
-            ["小海", false],
-            ["老地方", false],
-            ["MOMO", false],
-            ["Airly", false]
+            ["阿葵", true]
 
         ]
 
@@ -2375,1144 +2275,455 @@ const rooms = {
 
 const initialMessages = {
 
-    1: [
-
-        {
-            id: "r1-001",
-            user: "小麥",
-            text: "有人最近有在看投資嗎？",
-            color: "#ffd84d"
-        },
-
-        {
-            id: "r1-002",
-            from: "左邊轉彎",
-            to: "颱風天",
-            text: "你昨天不是說今天不上班？",
-            color: "#ffd84d"
-        },
-
-        {
-            id: "r1-003",
-            from: "颱風天",
-            to: "左邊轉彎",
-            text: "我改主意了。",
-            color: "#f27a3d"
-        },
-
-        {
-            id: "r1-004",
-            user: "檸檬汽水",
-            text: "今天做美甲花了好多錢。",
-            color: "#d8899b"
-        },
-
-        {
-            id: "r1-005",
-            user: "檸檬汽水",
-            text: "不要提醒我。",
-            color: "#d8899b"
-        },
-
-        {
-            id: "r1-006",
-            user: "藍色星期天",
-            text: "明天還要上班，我先睡了。",
-            color: "#b6a6d9"
-        },
-
-        {
-            id: "r1-007",
-            from: "阿哲",
-            to: "小麥",
-            text: "你最近不是說想換工作？",
-            color: "#ffd84d"
-        }
-
-    ],
-
-
-    2: [
-
-        {
-            id: "r2-001",
-            user: "雨天",
-            text: "有人還在讀書嗎？",
-            color: "#ffd84d"
-        },
-
-        {
-            id: "r2-002",
-            user: "MOMO",
-            text: "我已經不想讀了。",
-            color: "#b6a6d9"
-        },
-
-        {
-            id: "r2-003",
-            from: "小海",
-            to: "MOMO",
-            text: "明天要考試？",
-            color: "#ffd84d"
-        },
-
-        {
-            id: "r2-004",
-            user: "MOMO",
-            text: "嗯。",
-            color: "#b6a6d9"
-        },
-
-        {
-            id: "r2-005",
-            user: "老地方",
-            text: "以前大家也是這樣熬夜。",
-            color: "#c5ab9f"
-        }
-
-    ],
-
-
-    3: [
-
-        {
-            id: "r3-001",
-            from: "阿哲",
-            to: "小麥",
-            text: "你今天怎麼這麼安靜？",
-            color: "#ffd84d"
-        },
-
-        {
-            id: "r3-002",
-            user: "小麥",
-            text: "上班太累。",
-            color: "#ffd84d"
-        },
-
-        {
-            id: "r3-003",
-            user: "藍色星期天",
-            text: "你們還有人記得以前的聊天室嗎？",
-            color: "#b6a6d9"
-        },
-
-        {
-            id: "r3-004",
-            user: "阿葵",
-            text: "當然啊。",
-            color: "#b6a6d9"
-        },
-
-        {
-            id: "r3-005",
-            from: "阿葵",
-            to: "小麥",
-            text: "你還記得 Airly 嗎？",
-            color: "#b6a6d9"
-        },
-
-        {
-            id: "r3-006",
-            user: "小麥",
-            text: "突然問這個幹嘛。",
-            color: "#ffd84d"
-        },
-
-        {
-            id: "r3-007",
-            user: "藍色星期天",
-            text: "她以前真的很常待這裡。",
-            color: "#b6a6d9"
-        }
-
-    ]
-
-};
-
-
-/* ========================================
-   白天聊天資料（備用）
-======================================== */
-
-const daytimeMessages = {
-
-    1: [
-
-        {
-            from: "小麥",
-            to: "阿哲",
-            text: "你今天有空嗎？",
-            color: "#ffd84d"
-        },
-
-        {
-            user: "檸檬汽水",
-            text: "午餐到底要吃什麼。",
-            color: "#d8899b"
-        },
-
-        {
-            from: "颱風天",
-            to: "左邊轉彎",
-            text: "你公司今天也放假嗎？",
-            color: "#f27a3d"
-        },
-
-        {
-            user: "七喜",
-            text: "今天整天都在開會。",
-            color: "#ffd84d"
-        },
-
-        {
-            user: "小海",
-            text: "有人知道附近哪裡有便宜的咖啡嗎？",
-            color: "#7fafc4"
-        }
-
-    ],
-
-
-    2: [
-
-        {
-            user: "雨天",
-            text: "今天讀到一半睡著了。",
-            color: "#ffd84d"
-        },
-
-        {
-            from: "MOMO",
-            to: "小海",
-            text: "你下午有課嗎？",
-            color: "#b6a6d9"
-        },
-
-        {
-            user: "橘子汽水",
-            text: "午餐吃太飽了。",
-            color: "#f27a3d"
-        }
-
-    ],
-
-
-    3: [
-
-        {
-            user: "阿哲",
-            text: "今天有人上線喔。",
-            color: "#ffd84d"
-        },
-
-        {
-            from: "阿葵",
-            to: "小麥",
-            text: "你今天不用上班嗎？",
-            color: "#b6a6d9"
-        },
-
-        {
-            user: "小麥",
-            text: "中午休息一下而已。",
-            color: "#ffd84d"
-        }
-
-    ]
-
-};
-
-
-/* ========================================
-   夜間資料（備用）
-======================================== */
-
-const nighttimeMessages = {
-
     1: [],
+
     2: [],
+
     3: []
 
 };
 
 
 /* ========================================
-   私訊資料
+   投資型怪人（通用 01、02、03）
 ======================================== */
 
-const privateMessages = {
-
-    male: [],
-    female: []
-
-};
-
-
-/* ========================================
-   訪客自動發言資料庫
-======================================== */
-
-const visitorChatDatabase = [
+const scammerMessages = [
 
     {
-        id: "visitor_1",
-        room: 1,
-        lines: [
-            { speaker: "訪客_阿花", text: "這裡好熱鬧" },
-            { speaker: "訪客_小陳", text: "大家好啊" }
-        ]
+        name: "訪客_投資顧問",
+        text: "我這裡有內線消息，明天這支股票會漲，想知道的私我。"
     },
 
     {
-        id: "visitor_2",
-        room: 1,
-        lines: [
-            { speaker: "訪客_安安", text: "有人要聊天嗎" }
-        ]
+        name: "訪客_穩賺不賠",
+        text: "我投資半年賺了50萬，想學的可以私訊我。"
     },
 
     {
-        id: "visitor_3",
-        room: 1,
-        lines: [
-            { speaker: "訪客_阿傑", text: "我剛加入，大家好" }
-        ]
+        name: "訪客_月底求生存",
+        text: "有沒有人想要一起投資的？我有管道，小額就可以開始。"
     },
 
     {
-        id: "visitor_4",
-        room: 1,
-        lines: [
-            { speaker: "訪客_小美", text: "今天好無聊喔" },
-            { speaker: "訪客_阿豪", text: "對啊" }
-        ]
-    },
-
-    {
-        id: "visitor_5",
-        room: 1,
-        lines: [
-            { speaker: "訪客_本日限定", text: "有人要揪團嗎" }
-        ]
-    },
-
-    {
-        id: "visitor_6",
-        room: 1,
-        lines: [
-            { speaker: "訪客_內湖金城武", text: "我帥到沒朋友" }
-        ]
-    },
-
-    {
-        id: "visitor_7",
-        room: 2,
-        lines: [
-            { speaker: "訪客_深夜睡不著", text: "有人還醒著嗎" },
-            { speaker: "訪客_夜貓子", text: "我" }
-        ]
-    },
-
-    {
-        id: "visitor_8",
-        room: 2,
-        lines: [
-            { speaker: "訪客_吃宵夜", text: "好餓" },
-            { speaker: "訪客_阿宅", text: "我也是" }
-        ]
-    },
-
-    {
-        id: "visitor_9",
-        room: 3,
-        lines: [
-            { speaker: "訪客_路過", text: "這裡好復古" }
-        ]
-    },
-
-    {
-        id: "visitor_10",
-        room: 3,
-        lines: [
-            { speaker: "訪客_過氣老人", text: "以前這種聊天室很多" }
-        ]
+        name: "訪客_賺外快",
+        text: "每個月多賺一兩萬，有興趣的私訊我。"
     }
 
 ];
 
 
 /* ========================================
-   完整聊天資料庫（66組）
+   01 日不落 對話庫（26組）
 ======================================== */
 
 const chatDatabase = [
 
-    /* -------------------------------
-       06:00–09:00  morning
-    ------------------------------- */
+    /* ====================================
+       天氣（4組）
+    ==================================== */
 
     {
-        id: "morning_1",
+        id: "day_weather_1",
         room: 1,
         lines: [
-            { speaker: "七喜", text: "早" },
-            { speaker: "小麥", text: "早⋯⋯你怎麼這麼早起" },
-            { speaker: "七喜", text: "剛下班" },
-            { speaker: "小麥", text: "辛苦了" }
+            { speaker: "颱風天", text: "今天外面好熱喔" },
+            { speaker: "小麥", text: "對啊 我一出門就後悔了" },
+            { speaker: "檸檬汽水", text: "我這邊也是 下午還下雨" },
+            { speaker: "阿哲", text: "我這邊沒雨 但很悶" },
+            { speaker: "檸檬汽水", text: "好羨慕 下雨出門超麻煩" },
+            { speaker: "颱風天", text: "我寧願下雨 也不要這麼熱" },
+            { speaker: "小麥", text: "你們兩個要不要交換一下 我都可以" }
         ]
     },
 
     {
-        id: "morning_2",
+        id: "day_weather_2",
         room: 1,
         lines: [
-            { speaker: "小麥", text: "早安" },
-            { speaker: "小麥", text: "今天沒人嗎" }
+            { speaker: "小麥", text: "明天好像會變冷耶" },
+            { speaker: "七喜", text: "真的嗎 那我衣服要穿厚一點了" },
+            { speaker: "阿哲", target: "小麥", text: "你看天氣預報的喔" },
+            { speaker: "小麥", target: "阿哲", text: "對啊 手機有提醒" },
+            { speaker: "檸檬汽水", text: "我也看到了 說會降到十幾度" },
+            { speaker: "七喜", text: "那我要把外套找出來了" },
+            { speaker: "阿哲", text: "你們也太誇張 十幾度還好吧" },
+            { speaker: "檸檬汽水", target: "阿哲", text: "對你來說當然還好 你不怕冷" }
         ]
     },
 
     {
-        id: "morning_3",
+        id: "day_weather_3",
         room: 1,
         lines: [
-            { speaker: "阿哲", text: "早安" },
-            { speaker: "小麥", text: "早" },
-            { speaker: "阿哲", text: "今天好睏" },
-            { speaker: "小麥", text: "你昨天幾點睡" },
-            { speaker: "阿哲", text: "兩點多吧" },
-            { speaker: "小麥", text: "太扯了" }
+            { speaker: "檸檬汽水", text: "外面風好大 剛剛差點被吹走" },
+            { speaker: "颱風天", text: "我知道 我窗戶一直在響" },
+            { speaker: "阿哲", text: "你們該不會住同一區吧" },
+            { speaker: "檸檬汽水", target: "阿哲", text: "應該不是 但今天風真的很大" },
+            { speaker: "小麥", text: "我剛剛出門買東西 帽子差點飛走" },
+            { speaker: "颱風天", target: "小麥", text: "你看吧 我就說風很大" },
+            { speaker: "檸檬汽水", text: "我明天要帶帽子出門了" }
         ]
     },
 
     {
-        id: "morning_4",
+        id: "day_weather_4",
         room: 1,
         lines: [
-            { speaker: "小麥", text: "有人醒了嗎" }
-        ]
-    },
-
-    {
-        id: "morning_5",
-        room: 1,
-        lines: [
-            { speaker: "七喜", text: "早安" }
-        ]
-    },
-
-
-    /* -------------------------------
-       09:00–12:00  day
-    ------------------------------- */
-
-    {
-        id: "day_1",
-        room: 1,
-        lines: [
-            { speaker: "小麥", text: "我剛剛開會開到恍神" },
-            { speaker: "阿哲", text: "正常" },
-            { speaker: "小麥", text: "完全不知道在講什麼" },
-            { speaker: "檸檬汽水", text: "哈哈哈哈" },
-            { speaker: "小麥", text: "希望等一下不要有人問我問題" }
-        ]
-    },
-
-    {
-        id: "day_2",
-        room: 1,
-        lines: [
-            { speaker: "檸檬汽水", text: "我今天咖啡喝完了，好崩潰" },
-            { speaker: "小麥", text: "沒咖啡真的會死" },
-            { speaker: "檸檬汽水", text: "真的，我現在頭好痛" },
-            { speaker: "阿哲", text: "你不會去買？" },
-            { speaker: "檸檬汽水", text: "中午再去，現在不想動" }
-        ]
-    },
-
-    {
-        id: "day_3",
-        room: 1,
-        lines: [
-            { speaker: "颱風天", text: "今天天氣好好，待在辦公室好浪費" },
-            { speaker: "阿哲", text: "你每天都在講這句話" },
-            { speaker: "颱風天", text: "因為每天都這樣啊" },
-            { speaker: "左邊轉彎", text: "那你出去啊" },
-            { speaker: "颱風天", text: "我也想，但不行" }
-        ]
-    },
-
-    {
-        id: "day_4",
-        room: 1,
-        lines: [
-            { speaker: "小麥", text: "今天好想睡覺" },
-            { speaker: "檸檬汽水", text: "我也是" },
-            { speaker: "阿哲", text: "你們兩個昨天都幾點睡" },
-            { speaker: "小麥", text: "十二點" },
-            { speaker: "檸檬汽水", text: "我一點多" },
-            { speaker: "阿哲", text: "那還好吧" },
-            { speaker: "小麥", text: "可是還是累啊" }
-        ]
-    },
-
-    {
-        id: "day_5",
-        room: 1,
-        lines: [
-            { speaker: "七喜", text: "我昨天太晚睡了，現在好睏" },
-            { speaker: "小麥", text: "你幾點睡" },
-            { speaker: "七喜", text: "凌晨三點" },
-            { speaker: "小麥", text: "三點太扯了吧" },
-            { speaker: "七喜", text: "滑手機滑太久" },
-            { speaker: "阿哲", text: "那你活該" }
-        ]
-    },
-
-    {
-        id: "day_6",
-        room: 1,
-        lines: [
-            { speaker: "檸檬汽水", text: "今天的工作好煩" },
-            { speaker: "小麥", text: "我也是" },
-            { speaker: "阿哲", text: "哪一天不煩" },
-            { speaker: "檸檬汽水", text: "也是啦" },
-            { speaker: "颱風天", text: "這倒是真的" },
-            { speaker: "檸檬汽水", text: "哈哈哈哈" }
-        ]
-    },
-
-    {
-        id: "day_7",
-        room: 1,
-        lines: [
-            { speaker: "小麥", text: "今天好不想上班" },
-            { speaker: "小麥", text: "算了" }
-        ]
-    },
-
-    {
-        id: "day_8",
-        room: 1,
-        lines: [
-            { speaker: "檸檬汽水", text: "有人要訂飲料嗎" },
-            { speaker: "小麥", text: "我" },
-            { speaker: "檸檬汽水", text: "好" }
-        ]
-    },
-
-    {
-        id: "day_9",
-        room: 1,
-        lines: [
-            { speaker: "阿哲", text: "今天有夠忙" },
-            { speaker: "小麥", text: "辛苦了" }
-        ]
-    },
-
-    {
-        id: "day_10",
-        room: 1,
-        lines: [
-            { speaker: "颱風天", text: "我覺得今天會下雨" },
-            { speaker: "小麥", text: "是喔" },
-            { speaker: "颱風天", text: "嗯" }
+            { speaker: "颱風天", text: "聽說明天會下雨" },
+            { speaker: "七喜", text: "真假 我明天要出門耶" },
+            { speaker: "左邊轉彎", target: "七喜", text: "帶傘就好" },
+            { speaker: "颱風天", target: "七喜", text: "反正你每次問天氣 最後都會下雨" },
+            { speaker: "七喜", target: "颱風天", text: "所以我才要先問啊" },
+            { speaker: "檸檬汽水", target: "七喜", text: "你明天要去哪" },
+            { speaker: "七喜", target: "檸檬汽水", text: "沒有啦 就出門買個東西而已" },
+            { speaker: "左邊轉彎", target: "七喜", text: "那帶傘就好了" }
         ]
     },
 
 
-    /* -------------------------------
-       12:00–14:00  noon
-    ------------------------------- */
+    /* ====================================
+       日常閒聊（5組）
+    ==================================== */
 
     {
-        id: "noon_1",
+        id: "day_daily_1",
         room: 1,
         lines: [
-            { speaker: "小麥", text: "中午要吃什麼" },
-            { speaker: "阿哲", text: "你每天都在問這個問題" },
-            { speaker: "小麥", text: "因為我真的想不到" },
-            { speaker: "檸檬汽水", text: "我吃麵" },
-            { speaker: "颱風天", text: "我不想吃麵" },
-            { speaker: "小麥", text: "那你說" },
-            { speaker: "颱風天", text: "不知道" },
-            { speaker: "小麥", text: "⋯⋯" }
+            { speaker: "檸檬汽水", text: "我今天買了一杯咖啡 結果超難喝" },
+            { speaker: "小麥", target: "檸檬汽水", text: "哪一家啊 我之前也踩過雷" },
+            { speaker: "檸檬汽水", target: "小麥", text: "就巷口那家 你下次不要買那間" },
+            { speaker: "阿哲", target: "檸檬汽水", text: "那你後來有喝完嗎" },
+            { speaker: "檸檬汽水", target: "阿哲", text: "沒有 喝兩口就丟了" },
+            { speaker: "小麥", text: "好浪費 但難喝真的喝不下去" },
+            { speaker: "阿哲", target: "檸檬汽水", text: "一杯多少" },
+            { speaker: "檸檬汽水", target: "阿哲", text: "好像七十幾吧 心痛" }
         ]
     },
 
     {
-        id: "noon_2",
+        id: "day_daily_2",
         room: 1,
         lines: [
-            { speaker: "檸檬汽水", text: "我剛剛訂了便當，結果忘記加辣" },
-            { speaker: "阿哲", text: "你每次都忘記" },
-            { speaker: "檸檬汽水", text: "我真的有跟店員說啊" },
-            { speaker: "小麥", text: "那怎麼辦" },
-            { speaker: "檸檬汽水", text: "就這樣吃啊，不然能怎樣" }
+            { speaker: "七喜", text: "我剛剛在外面看到一隻貓" },
+            { speaker: "檸檬汽水", target: "七喜", text: "可愛嗎" },
+            { speaker: "七喜", target: "檸檬汽水", text: "還滿可愛的 躺在路邊曬太陽" },
+            { speaker: "小麥", text: "好療癒喔" },
+            { speaker: "阿哲", target: "七喜", text: "你怎麼沒拍起來" },
+            { speaker: "七喜", target: "阿哲", text: "來不及 牠跑掉了" },
+            { speaker: "檸檬汽水", target: "七喜", text: "下次要趕快拍" },
+            { speaker: "七喜", target: "檸檬汽水", text: "哪有那麼快 牠動作比我還快" }
         ]
     },
 
     {
-        id: "noon_3",
+        id: "day_daily_3",
         room: 1,
         lines: [
-            { speaker: "颱風天", text: "我在吃泡麵" },
-            { speaker: "小麥", text: "你不是說你不想吃麵" },
-            { speaker: "颱風天", text: "泡麵是泡麵，不一樣" },
-            { speaker: "阿哲", text: "哪裡不一樣" },
-            { speaker: "颱風天", text: "一個是煮的，一個是泡的" },
-            { speaker: "檸檬汽水", text: "哈哈哈哈" }
+            { speaker: "檸檬汽水", text: "我今天買了一件外套" },
+            { speaker: "小麥", target: "檸檬汽水", text: "好看嗎" },
+            { speaker: "檸檬汽水", target: "小麥", text: "還不錯 但好像買太大了" },
+            { speaker: "阿哲", target: "檸檬汽水", text: "你每次都這樣" },
+            { speaker: "檸檬汽水", target: "阿哲", text: "我哪知道尺寸不合啊" },
+            { speaker: "小麥", target: "檸檬汽水", text: "可以換嗎" },
+            { speaker: "檸檬汽水", target: "小麥", text: "可以 但要再跑一趟 好麻煩" },
+            { speaker: "阿哲", target: "檸檬汽水", text: "那就留著啊" },
+            { speaker: "檸檬汽水", target: "阿哲", text: "太大了啦 穿起來像布袋" }
         ]
     },
 
     {
-        id: "noon_4",
+        id: "day_daily_4",
         room: 1,
         lines: [
-            { speaker: "小麥", text: "我吃便當，好飽" },
-            { speaker: "檸檬汽水", text: "我還沒吃完" },
-            { speaker: "小麥", text: "你吃什麼" },
-            { speaker: "檸檬汽水", text: "麵啊" },
-            { speaker: "小麥", text: "你不是吃便當？" },
-            { speaker: "檸檬汽水", text: "後來改吃麵了" }
+            { speaker: "小麥", text: "我今天出去走了一下" },
+            { speaker: "颱風天", target: "小麥", text: "去哪裡" },
+            { speaker: "小麥", target: "颱風天", text: "沒有 就去附近晃晃 順便買東西" },
+            { speaker: "阿哲", target: "小麥", text: "你居然會出門" },
+            { speaker: "小麥", target: "阿哲", text: "偶爾還是要動一下好嗎" },
+            { speaker: "檸檬汽水", text: "我也是 今天走了好大一圈" },
+            { speaker: "颱風天", target: "檸檬汽水", text: "你們兩個今天怎麼都這麼積極" },
+            { speaker: "小麥", target: "颱風天", text: "天氣好啊 不出門對不起自己" }
         ]
     },
 
     {
-        id: "noon_5",
+        id: "day_daily_5",
         room: 1,
         lines: [
-            { speaker: "七喜", text: "等一下有人要揪飲料嗎" },
-            { speaker: "小麥", text: "我！" },
-            { speaker: "檸檬汽水", text: "我！" },
-            { speaker: "颱風天", text: "我也要" },
-            { speaker: "阿哲", text: "你不是還在吃泡麵" },
-            { speaker: "颱風天", text: "我可以一邊吃泡麵一邊喝飲料" },
-            { speaker: "左邊轉彎", text: "⋯⋯好喔" }
-        ]
-    },
-
-    {
-        id: "noon_6",
-        room: 1,
-        lines: [
-            { speaker: "小麥", text: "我要一杯紅茶微糖微冰" },
-            { speaker: "檸檬汽水", text: "我也是紅茶" },
-            { speaker: "颱風天", text: "一樣" },
-            { speaker: "阿哲", text: "我跟小麥一樣" },
-            { speaker: "七喜", text: "好" },
-            { speaker: "檸檬汽水", text: "謝謝七喜" }
-        ]
-    },
-
-    {
-        id: "noon_7",
-        room: 1,
-        lines: [
-            { speaker: "小麥", text: "好餓" },
-            { speaker: "阿哲", text: "去吃啊" },
-            { speaker: "小麥", text: "不知道要吃什麼" },
-            { speaker: "阿哲", text: "⋯⋯" }
-        ]
-    },
-
-    {
-        id: "noon_8",
-        room: 1,
-        lines: [
-            { speaker: "檸檬汽水", text: "我吃飽了" },
-            { speaker: "七喜", text: "我也是" }
-        ]
-    },
-
-    {
-        id: "noon_9",
-        room: 1,
-        lines: [
-            { speaker: "颱風天", text: "有人知道哪裡有賣涼麵嗎" },
-            { speaker: "小麥", text: "不知道" },
-            { speaker: "颱風天", text: "好吧" }
-        ]
-    },
-
-    {
-        id: "noon_10",
-        room: 1,
-        lines: [
-            { speaker: "七喜", text: "今天中午沒什麼人" },
-            { speaker: "小麥", text: "對啊" }
+            { speaker: "七喜", text: "我今天發現一家不錯的麵包店" },
+            { speaker: "檸檬汽水", target: "七喜", text: "在哪裡" },
+            { speaker: "七喜", target: "檸檬汽水", text: "就市場附近那條巷子裡面" },
+            { speaker: "小麥", target: "七喜", text: "好吃嗎" },
+            { speaker: "七喜", target: "小麥", text: "還不錯 下次去可以買" },
+            { speaker: "阿哲", target: "七喜", text: "你怎麼會發現那家" },
+            { speaker: "七喜", target: "阿哲", text: "就路過看到的 結果進去買了兩個麵包" },
+            { speaker: "檸檬汽水", target: "七喜", text: "哪一種好吃" },
+            { speaker: "七喜", target: "檸檬汽水", text: "紅豆的還不錯 奶油的有點甜" }
         ]
     },
 
 
-    /* -------------------------------
-       14:00–20:00  afternoon
-    ------------------------------- */
+    /* ====================================
+       作息/出現時間（3組）
+    ==================================== */
 
     {
-        id: "afternoon_1",
+        id: "day_routine_1",
         room: 1,
         lines: [
-            { speaker: "小麥", text: "下午好想睡覺" },
-            { speaker: "檸檬汽水", text: "我也是" },
-            { speaker: "阿哲", text: "你們兩個是怎樣" },
-            { speaker: "小麥", text: "吃飽就想睡啊" },
-            { speaker: "檸檬汽水", text: "正常" }
+            { speaker: "阿哲", target: "檸檬汽水", text: "你今天怎麼這麼早出現" },
+            { speaker: "檸檬汽水", target: "阿哲", text: "我今天放假啊 你忘了喔" },
+            { speaker: "阿哲", target: "檸檬汽水", text: "對 忘記了" },
+            { speaker: "檸檬汽水", target: "阿哲", text: "我就知道你會忘記" },
+            { speaker: "小麥", target: "檸檬汽水", text: "那你今天有什麼計劃" },
+            { speaker: "檸檬汽水", target: "小麥", text: "沒有 就待在家耍廢" },
+            { speaker: "阿哲", text: "聽起來不錯" }
         ]
     },
 
     {
-        id: "afternoon_2",
+        id: "day_routine_2",
         room: 1,
         lines: [
-            { speaker: "檸檬汽水", text: "我下午沒事做了" },
-            { speaker: "阿哲", text: "那你爽" },
-            { speaker: "檸檬汽水", text: "可是好無聊" },
-            { speaker: "小麥", text: "你可以幫我上班" },
-            { speaker: "檸檬汽水", text: "不要" }
+            { speaker: "小麥", target: "左邊轉彎", text: "你今天好安靜" },
+            { speaker: "左邊轉彎", target: "小麥", text: "沒有 就沒什麼事" },
+            { speaker: "小麥", target: "左邊轉彎", text: "好吧" },
+            { speaker: "阿哲", target: "小麥", text: "你平常不是也沒講話" },
+            { speaker: "左邊轉彎", target: "阿哲", text: "對啊 所以正常" },
+            { speaker: "小麥", text: "哈哈哈哈 也是啦" },
+            { speaker: "檸檬汽水", text: "左邊轉彎就是這個風格" }
         ]
     },
 
     {
-        id: "afternoon_3",
+        id: "day_routine_3",
         room: 1,
         lines: [
-            { speaker: "颱風天", text: "今天會不會下雨啊" },
-            { speaker: "小麥", text: "你早上不是問過了" },
-            { speaker: "颱風天", text: "早上跟下午不一樣" },
-            { speaker: "阿哲", text: "哪裡不一樣" },
-            { speaker: "颱風天", text: "天氣會變啊" },
-            { speaker: "左邊轉彎", text: "⋯⋯" }
-        ]
-    },
-
-    {
-        id: "afternoon_4",
-        room: 1,
-        lines: [
-            { speaker: "小麥", text: "我剛剛被老闆叫去" },
-            { speaker: "檸檬汽水", text: "怎麼了" },
-            { speaker: "小麥", text: "沒有，交代一些事情" },
-            { speaker: "阿哲", text: "還以為你要被罵了" },
-            { speaker: "小麥", text: "我也以為" }
-        ]
-    },
-
-    {
-        id: "afternoon_5",
-        room: 1,
-        lines: [
-            { speaker: "檸檬汽水", text: "我決定今天要早點下班" },
-            { speaker: "阿哲", text: "你每天都這樣說" },
-            { speaker: "檸檬汽水", text: "今天是真的" },
-            { speaker: "小麥", text: "你昨天也說要早點下班" },
-            { speaker: "檸檬汽水", text: "⋯⋯" }
-        ]
-    },
-
-    {
-        id: "afternoon_6",
-        room: 1,
-        lines: [
-            { speaker: "七喜", text: "我今天放假" },
-            { speaker: "小麥", text: "好好喔" },
-            { speaker: "檸檬汽水", text: "那你在幹嘛" },
-            { speaker: "七喜", text: "躺著" },
-            { speaker: "小麥", text: "羨慕" }
-        ]
-    },
-
-    {
-        id: "afternoon_7",
-        room: 1,
-        lines: [
-            { speaker: "小麥", text: "幾點了" },
-            { speaker: "阿哲", text: "快五點了" },
-            { speaker: "檸檬汽水", text: "再一小時下班" },
-            { speaker: "小麥", text: "撐住" }
-        ]
-    },
-
-    {
-        id: "afternoon_8",
-        room: 1,
-        lines: [
-            { speaker: "小麥", text: "下午好漫長" },
-            { speaker: "檸檬汽水", text: "真的" }
-        ]
-    },
-
-    {
-        id: "afternoon_9",
-        room: 1,
-        lines: [
-            { speaker: "阿哲", text: "我剛剛睡著了" },
-            { speaker: "小麥", text: "你也太累了吧" },
-            { speaker: "阿哲", text: "嗯" }
-        ]
-    },
-
-    {
-        id: "afternoon_10",
-        room: 1,
-        lines: [
-            { speaker: "檸檬汽水", text: "我現在好想回家" },
-            { speaker: "檸檬汽水", text: "算了" }
-        ]
-    },
-
-    {
-        id: "afternoon_11",
-        room: 1,
-        lines: [
-            { speaker: "颱風天", text: "今天風很大" },
-            { speaker: "七喜", text: "真的嗎" },
-            { speaker: "颱風天", text: "對" }
-        ]
-    },
-
-    {
-        id: "afternoon_12",
-        room: 1,
-        lines: [
-            { speaker: "小麥", text: "有人晚上要幹嘛嗎" },
-            { speaker: "檸檬汽水", text: "在家" },
-            { speaker: "阿哲", text: "加班" },
-            { speaker: "小麥", text: "好吧" }
+            { speaker: "阿哲", target: "七喜", text: "你還不睡喔" },
+            { speaker: "七喜", target: "阿哲", text: "還沒 等一下" },
+            { speaker: "阿哲", target: "七喜", text: "你不是明天要早起" },
+            { speaker: "七喜", target: "阿哲", text: "對啊 但現在還睡不著" },
+            { speaker: "小麥", text: "我也是 躺在床上滑手機" },
+            { speaker: "七喜", target: "小麥", text: "那你還說我" },
+            { speaker: "小麥", target: "七喜", text: "不一樣 我在培養睡意" }
         ]
     },
 
 
-    /* -------------------------------
-       20:00–23:00  evening
-    ------------------------------- */
+    /* ====================================
+       生活瑣事（4組）
+    ==================================== */
 
     {
-        id: "evening_1",
+        id: "evening_life_1",
         room: 1,
         lines: [
-            { speaker: "檸檬汽水", text: "我終於回家了" },
-            { speaker: "小麥", text: "今天很晚欸" },
-            { speaker: "檸檬汽水", text: "今天事情超多" },
-            { speaker: "阿哲", text: "我還在公司" },
-            { speaker: "檸檬汽水", text: "蛤？" },
-            { speaker: "阿哲", text: "嗯⋯⋯" }
+            { speaker: "檸檬汽水", target: "七喜", text: "你上次說那家飲料店 我後來有去買" },
+            { speaker: "七喜", target: "檸檬汽水", text: "好喝嗎" },
+            { speaker: "檸檬汽水", target: "七喜", text: "還不錯 但有點甜" },
+            { speaker: "七喜", target: "檸檬汽水", text: "那下次我少糖就好" },
+            { speaker: "小麥", text: "哪一家啊 我沒聽你們說過" },
+            { speaker: "檸檬汽水", target: "小麥", text: "就新開的那家 叫什麼我忘了" },
+            { speaker: "七喜", target: "小麥", text: "那你下次可以試試看" }
         ]
     },
 
     {
-        id: "evening_2",
+        id: "evening_life_2",
         room: 1,
         lines: [
-            { speaker: "七喜", text: "有人要吃宵夜嗎" },
-            { speaker: "小麥", text: "我想吃" },
-            { speaker: "檸檬汽水", text: "我也要" },
-            { speaker: "七喜", text: "你們要吃什麼" },
-            { speaker: "小麥", text: "雞排" },
-            { speaker: "檸檬汽水", text: "雞排＋珍奶" },
-            { speaker: "七喜", text: "好喔" }
+            { speaker: "左邊轉彎", target: "檸檬汽水", text: "你有聽過那首歌嗎" },
+            { speaker: "檸檬汽水", target: "左邊轉彎", text: "哪一首" },
+            { speaker: "左邊轉彎", target: "檸檬汽水", text: "算了 沒聽過就算了" },
+            { speaker: "檸檬汽水", target: "左邊轉彎", text: "你這樣講我很好奇耶" },
+            { speaker: "阿哲", target: "左邊轉彎", text: "你直接說名字就好" },
+            { speaker: "左邊轉彎", target: "阿哲", text: "忘記叫什麼了" },
+            { speaker: "檸檬汽水", target: "左邊轉彎", text: "你這樣我查不到啊" }
         ]
     },
 
     {
-        id: "evening_3",
+        id: "evening_life_3",
         room: 1,
         lines: [
-            { speaker: "颱風天", text: "今天晚上風好大" },
-            { speaker: "小麥", text: "真的嗎" },
-            { speaker: "颱風天", text: "我窗戶一直有聲音" },
-            { speaker: "阿哲", text: "是不是沒關好" },
-            { speaker: "颱風天", text: "有關啊" },
-            { speaker: "阿哲", text: "那不知道" }
+            { speaker: "小麥", text: "我今天試著自己做飯" },
+            { speaker: "阿哲", target: "小麥", text: "然後呢" },
+            { speaker: "小麥", target: "阿哲", text: "然後就沒有然後了" },
+            { speaker: "檸檬汽水", text: "哈哈哈哈哈" },
+            { speaker: "阿哲", target: "小麥", text: "我猜是失敗了" },
+            { speaker: "小麥", target: "阿哲", text: "對 廚房差點燒掉" },
+            { speaker: "檸檬汽水", target: "小麥", text: "你也太誇張" },
+            { speaker: "小麥", target: "檸檬汽水", text: "我就沒有做飯的天份啊" }
         ]
     },
 
     {
-        id: "evening_4",
+        id: "evening_life_4",
         room: 1,
         lines: [
-            { speaker: "檸檬汽水", text: "我今天看了一整天的劇" },
-            { speaker: "小麥", text: "你在看哪部" },
-            { speaker: "檸檬汽水", text: "Netflix新的那部韓劇" },
-            { speaker: "阿哲", text: "好看嗎" },
-            { speaker: "檸檬汽水", text: "還不錯" },
-            { speaker: "颱風天", text: "我也有看" },
-            { speaker: "檸檬汽水", text: "你看到第幾集" }
-        ]
-    },
-
-    {
-        id: "evening_5",
-        room: 1,
-        lines: [
-            { speaker: "小麥", text: "我終於下班了" },
-            { speaker: "阿哲", text: "我也剛到" },
-            { speaker: "檸檬汽水", text: "你們兩個今天都好晚" },
-            { speaker: "小麥", text: "沒辦法，事情太多" },
-            { speaker: "檸檬汽水", text: "辛苦了" },
-            { speaker: "阿哲", text: "你才辛苦，你最晚走" }
-        ]
-    },
-
-    {
-        id: "evening_6",
-        room: 1,
-        lines: [
-            { speaker: "檸檬汽水", text: "有人要聽笑話嗎" },
-            { speaker: "阿哲", text: "不要" },
-            { speaker: "小麥", text: "聽啊" },
-            { speaker: "檸檬汽水", text: "有一隻魚問另一隻魚，水溫怎麼樣" },
-            { speaker: "檸檬汽水", text: "另一隻魚說，不知道，我沒溫度計" },
-            { speaker: "小麥", text: "⋯⋯" },
-            { speaker: "阿哲", text: "⋯⋯" },
-            { speaker: "檸檬汽水", text: "不好笑嗎" },
-            { speaker: "小麥", text: "不好笑" }
-        ]
-    },
-
-    {
-        id: "evening_7",
-        room: 1,
-        lines: [
-            { speaker: "七喜", text: "我買回來了" },
-            { speaker: "小麥", text: "終於" },
-            { speaker: "檸檬汽水", text: "我的雞排呢" },
-            { speaker: "七喜", text: "這裡" },
-            { speaker: "檸檬汽水", text: "謝謝！" },
-            { speaker: "七喜", text: "阿哲你要的鹽酥雞" },
-            { speaker: "阿哲", text: "感謝" }
-        ]
-    },
-
-    {
-        id: "evening_8",
-        room: 1,
-        lines: [
-            { speaker: "小麥", text: "今天真的好累" },
-            { speaker: "檸檬汽水", text: "我也是，明天還要上班" },
-            { speaker: "阿哲", text: "誰不用" },
-            { speaker: "颱風天", text: "我不用" },
-            { speaker: "阿哲", text: "你不是每天都不用" },
-            { speaker: "颱風天", text: "對啊" }
-        ]
-    },
-
-    {
-        id: "evening_9",
-        room: 1,
-        lines: [
-            { speaker: "檸檬汽水", text: "有人要聊天嗎" },
-            { speaker: "小麥", text: "我" },
-            { speaker: "檸檬汽水", text: "你在幹嘛" },
-            { speaker: "小麥", text: "看電視" },
-            { speaker: "檸檬汽水", text: "好看嗎" },
-            { speaker: "小麥", text: "還行" }
-        ]
-    },
-
-    {
-        id: "evening_10",
-        room: 1,
-        lines: [
-            { speaker: "七喜", text: "買宵夜" },
-            { speaker: "小麥", text: "你要去買喔" },
-            { speaker: "七喜", text: "對" },
-            { speaker: "小麥", text: "幫我買" },
-            { speaker: "七喜", text: "好" }
-        ]
-    },
-
-    {
-        id: "evening_11",
-        room: 1,
-        lines: [
-            { speaker: "阿哲", text: "我今天終於可以早點睡了" },
-            { speaker: "檸檬汽水", text: "幾點" },
-            { speaker: "阿哲", text: "十二點" },
-            { speaker: "檸檬汽水", text: "那還叫早" },
-            { speaker: "阿哲", text: "對我來說算" }
-        ]
-    },
-
-    {
-        id: "evening_12",
-        room: 1,
-        lines: [
-            { speaker: "颱風天", text: "外面月亮好亮" },
-            { speaker: "颱風天", text: "沒人看月亮嗎" }
-        ]
-    },
-
-    {
-        id: "evening_13",
-        room: 1,
-        lines: [
-            { speaker: "小麥", text: "今天好累" },
-            { speaker: "檸檬汽水", text: "我也是" },
-            { speaker: "阿哲", text: "加一" }
-        ]
-    },
-
-    {
-        id: "evening_14",
-        room: 1,
-        lines: [
-            { speaker: "檸檬汽水", text: "我剛剛看到一個很好笑的影片" },
-            { speaker: "小麥", text: "貼給我" },
-            { speaker: "檸檬汽水", text: "好" },
-            { speaker: "小麥", text: "哈哈哈哈" }
+            { speaker: "颱風天", text: "我昨天晚上網路一直斷線" },
+            { speaker: "小麥", target: "颱風天", text: "是中華的嗎" },
+            { speaker: "颱風天", target: "小麥", text: "對啊" },
+            { speaker: "阿哲", text: "最近好像很多人都這樣" },
+            { speaker: "颱風天", text: "希望明天會好一點" },
+            { speaker: "檸檬汽水", target: "颱風天", text: "我也是中華 但我這邊沒事" },
+            { speaker: "颱風天", target: "檸檬汽水", text: "那你運氣好" }
         ]
     },
 
 
-    /* -------------------------------
-       23:00–03:00  late
-    ------------------------------- */
+    /* ====================================
+       晚上/睡覺前（3組）→ dead_sleep，只在 03:00–06:00 觸發
+    ==================================== */
 
     {
-        id: "late_1",
+        id: "dead_sleep_1",
         room: 1,
         lines: [
             { speaker: "檸檬汽水", text: "我差不多要睡了" },
-            { speaker: "小麥", text: "我也是" },
-            { speaker: "檸檬汽水", text: "明天還要早起" },
             { speaker: "小麥", text: "晚安" },
-            { speaker: "檸檬汽水", text: "晚安～" }
+            { speaker: "檸檬汽水", target: "小麥", text: "晚安～" },
+            { speaker: "阿哲", target: "檸檬汽水", text: "這麼早" },
+            { speaker: "檸檬汽水", target: "阿哲", text: "明天要早起啊 不能跟你們一樣熬夜" }
         ]
     },
 
     {
-        id: "late_2",
+        id: "dead_sleep_2",
         room: 1,
         lines: [
-            { speaker: "小麥", text: "還有人在嗎" },
-            { speaker: "七喜", text: "有" },
-            { speaker: "小麥", text: "你在幹嘛" },
-            { speaker: "七喜", text: "滑手機" }
+            { speaker: "阿哲", target: "檸檬汽水", text: "你不是說要早點睡" },
+            { speaker: "檸檬汽水", target: "阿哲", text: "再一下下就好了" },
+            { speaker: "阿哲", target: "檸檬汽水", text: "你每次都是這句" },
+            { speaker: "檸檬汽水", target: "阿哲", text: "可是這集真的快看完了" },
+            { speaker: "小麥", target: "檸檬汽水", text: "你上次也這樣說" },
+            { speaker: "檸檬汽水", target: "小麥", text: "上次不一樣啦 上次還剩很多" },
+            { speaker: "阿哲", target: "檸檬汽水", text: "都一樣" }
         ]
     },
 
     {
-        id: "late_3",
+        id: "dead_sleep_3",
         room: 1,
         lines: [
-            { speaker: "阿哲", text: "我也差不多要睡了" },
-            { speaker: "檸檬汽水", text: "你不是都兩點才睡" },
-            { speaker: "阿哲", text: "今天比較累" },
-            { speaker: "檸檬汽水", text: "那早點休息" },
-            { speaker: "阿哲", text: "晚安" }
-        ]
-    },
-
-    {
-        id: "late_4",
-        room: 1,
-        lines: [
-            { speaker: "颱風天", text: "好像沒有人了" },
-            { speaker: "左邊轉彎", text: "我還醒著" },
-            { speaker: "颱風天", text: "你怎麼還不睡" },
-            { speaker: "左邊轉彎", text: "不想睡" }
-        ]
-    },
-
-    {
-        id: "late_5",
-        room: 1,
-        lines: [
-            { speaker: "小麥", text: "有人還醒著嗎" },
-            { speaker: "小麥", text: "看來沒人了" },
-            { speaker: "小麥", text: "我也要睡了，晚安" }
-        ]
-    },
-
-    {
-        id: "late_6",
-        room: 1,
-        lines: [
-            { speaker: "七喜", text: "兩點多了" },
-            { speaker: "七喜", text: "好吧，晚安" }
-        ]
-    },
-
-    {
-        id: "late_7",
-        room: 1,
-        lines: [
-            { speaker: "小麥", text: "還有人醒著嗎" },
-            { speaker: "小麥", text: "好吧" }
-        ]
-    },
-
-    {
-        id: "late_8",
-        room: 1,
-        lines: [
-            { speaker: "檸檬汽水", text: "我還沒睡" },
-            { speaker: "七喜", text: "我也是" },
-            { speaker: "檸檬汽水", text: "你在幹嘛" },
-            { speaker: "七喜", text: "發呆" }
-        ]
-    },
-
-    {
-        id: "late_9",
-        room: 1,
-        lines: [
-            { speaker: "颱風天", text: "好像快下雨了" },
-            { speaker: "颱風天", text: "好吧" }
-        ]
-    },
-
-    {
-        id: "late_10",
-        room: 1,
-        lines: [
-            { speaker: "阿哲", text: "大家晚安" },
-            { speaker: "小麥", text: "晚安" }
+            { speaker: "小麥", target: "七喜", text: "你怎麼還沒睡" },
+            { speaker: "七喜", target: "小麥", text: "睡不著 滑一下手機" },
+            { speaker: "小麥", target: "七喜", text: "我也是" },
+            { speaker: "七喜", target: "小麥", text: "那你還說我" },
+            { speaker: "小麥", target: "七喜", text: "我是在關心你好嗎" },
+            { speaker: "七喜", target: "小麥", text: "你明明自己也還沒睡" }
         ]
     },
 
 
-    /* -------------------------------
-       03:00–06:00  dead
-    ------------------------------- */
+    /* ====================================
+       晚上/宵夜話題（2組）
+    ==================================== */
 
     {
-        id: "dead_1",
+        id: "evening_snack_1",
         room: 1,
         lines: [
-            { speaker: "七喜", text: "還有人醒著嗎" },
-            { speaker: "七喜", text: "嗯，晚安" }
+            { speaker: "七喜", text: "晚上有人要吃宵夜嗎" },
+            { speaker: "小麥", text: "我剛吃飽 先不要" },
+            { speaker: "檸檬汽水", target: "七喜", text: "我想吃雞排" },
+            { speaker: "七喜", target: "檸檬汽水", text: "那我去買" },
+            { speaker: "檸檬汽水", target: "七喜", text: "真的嗎 感謝" },
+            { speaker: "七喜", target: "檸檬汽水", text: "順便而已" },
+            { speaker: "小麥", target: "檸檬汽水", text: "你對他真好" },
+            { speaker: "檸檬汽水", target: "小麥", text: "他自願的 不是我要求的" }
         ]
     },
 
     {
-        id: "dead_2",
-        room: 1,
-        lines: []
-    },
-
-    {
-        id: "dead_3",
+        id: "evening_snack_2",
         room: 1,
         lines: [
-            { speaker: "小麥", text: "⋯⋯" }
+            { speaker: "阿哲", target: "檸檬汽水", text: "你今天晚上要幹嘛" },
+            { speaker: "檸檬汽水", target: "阿哲", text: "看劇" },
+            { speaker: "阿哲", target: "檸檬汽水", text: "你不是說快看完了" },
+            { speaker: "檸檬汽水", target: "阿哲", text: "對啊 剩兩集" },
+            { speaker: "阿哲", target: "檸檬汽水", text: "那看完勒" },
+            { speaker: "檸檬汽水", target: "阿哲", text: "再找下一部啊 不然勒" },
+            { speaker: "小麥", target: "檸檬汽水", text: "你都不會劇荒喔" },
+            { speaker: "檸檬汽水", target: "小麥", text: "會啊 但先看完再說" }
+        ]
+    },
+
+
+    /* ====================================
+       寵物（5組）
+    ==================================== */
+
+    {
+        id: "day_pet_1",
+        room: 1,
+        lines: [
+            { speaker: "檸檬汽水", text: "你們有養寵物嗎" },
+            { speaker: "小麥", target: "檸檬汽水", text: "我家有一隻貓" },
+            { speaker: "檸檬汽水", target: "小麥", text: "真的嗎 什麼顏色" },
+            { speaker: "小麥", target: "檸檬汽水", text: "橘色的 胖胖的" },
+            { speaker: "阿哲", target: "小麥", text: "橘貓是不是都很胖" },
+            { speaker: "小麥", target: "阿哲", text: "對 牠就是標準的那種" },
+            { speaker: "檸檬汽水", target: "小麥", text: "好可愛喔 叫什麼名字" },
+            { speaker: "小麥", target: "檸檬汽水", text: "叫阿橘 很直接吧" }
         ]
     },
 
     {
-        id: "dead_4",
+        id: "day_pet_2",
         room: 1,
         lines: [
-            { speaker: "七喜", text: "有人醒著嗎" }
+            { speaker: "七喜", text: "我也有養貓" },
+            { speaker: "檸檬汽水", target: "七喜", text: "什麼品種" },
+            { speaker: "七喜", target: "檸檬汽水", text: "米克斯 是領養的" },
+            { speaker: "小麥", text: "好可愛喔" },
+            { speaker: "七喜", text: "牠剛來的時候很小一隻 現在已經很大了" },
+            { speaker: "阿哲", target: "七喜", text: "多久了" },
+            { speaker: "七喜", target: "阿哲", text: "差不多兩年了" }
         ]
     },
 
     {
-        id: "dead_5",
+        id: "day_pet_3",
         room: 1,
         lines: [
-            { speaker: "小麥", text: "半夜醒來睡不著" }
+            { speaker: "檸檬汽水", text: "我今天看到一隻柴犬 超可愛" },
+            { speaker: "小麥", target: "檸檬汽水", text: "在哪裡看到的" },
+            { speaker: "檸檬汽水", target: "小麥", text: "在公園那邊 主人帶牠散步" },
+            { speaker: "颱風天", target: "檸檬汽水", text: "柴犬是不是都很有個性" },
+            { speaker: "檸檬汽水", target: "颱風天", text: "對啊 那隻完全不理人" },
+            { speaker: "七喜", text: "柴犬好像都這樣" },
+            { speaker: "檸檬汽水", text: "但還是很可愛" }
+        ]
+    },
+
+    {
+        id: "day_pet_4",
+        room: 1,
+        lines: [
+            { speaker: "小麥", text: "我家的貓今天又打翻東西了" },
+            { speaker: "阿哲", target: "小麥", text: "牠是不是故意的" },
+            { speaker: "小麥", target: "阿哲", text: "我覺得是 牠還會看我反應" },
+            { speaker: "檸檬汽水", target: "小麥", text: "好聰明 但也好煩" },
+            { speaker: "小麥", target: "檸檬汽水", text: "對啊 又氣又好笑" },
+            { speaker: "左邊轉彎", target: "小麥", text: "你沒關好嗎" },
+            { speaker: "小麥", target: "左邊轉彎", text: "我關了 但牠會自己打開" }
+        ]
+    },
+
+    {
+        id: "day_pet_5",
+        room: 1,
+        lines: [
+            { speaker: "七喜", text: "我家的貓最近很愛晚上亂叫" },
+            { speaker: "小麥", target: "七喜", text: "為什麼" },
+            { speaker: "七喜", target: "小麥", text: "不知道 可能是想出門" },
+            { speaker: "阿哲", target: "七喜", text: "貓不是都待在家嗎" },
+            { speaker: "七喜", target: "阿哲", text: "對啊 但牠就是一直叫" },
+            { speaker: "檸檬汽水", target: "七喜", text: "你有帶牠去看醫生嗎" },
+            { speaker: "七喜", target: "檸檬汽水", text: "有 醫生說沒什麼問題" }
         ]
     }
 
@@ -3520,8 +2731,581 @@ const chatDatabase = [
 
 
 /* ========================================
-   登入函數
+   02 夜不息 對話庫（19組）
 ======================================== */
+
+const chatDatabaseNight = [
+
+    /* ====================================
+       晚上（5組）
+    ==================================== */
+
+    {
+        id: "night_evening_1",
+        room: 2,
+        lines: [
+            { speaker: "工讀生", text: "今天人好少" },
+            { speaker: "雨天", target: "工讀生", text: "對啊 禮拜五晚上不是應該比較多人嗎" },
+            { speaker: "MOMO", target: "雨天", text: "可能都出去玩了" },
+            { speaker: "小海", target: "MOMO", text: "我也好想出去" },
+            { speaker: "雨天", target: "小海", text: "那你怎麼不去" },
+            { speaker: "小海", target: "雨天", text: "沒人約啊" },
+            { speaker: "工讀生", target: "小海", text: "我也是 都在這邊顧聊天室" },
+            { speaker: "橘子汽水", target: "工讀生", text: "假日還待在家 真的很廢" },
+            { speaker: "工讀生", target: "橘子汽水", text: "你不是也在嗎" }
+        ]
+    },
+
+    {
+        id: "night_evening_2",
+        room: 2,
+        lines: [
+            { speaker: "橘子汽水", target: "雨天", text: "你喜歡喝什麼飲料" },
+            { speaker: "雨天", target: "橘子汽水", text: "我都喝紅茶 偶爾珍奶" },
+            { speaker: "橘子汽水", target: "雨天", text: "珍奶我都喝半糖" },
+            { speaker: "工讀生", target: "橘子汽水", text: "我都喝無糖綠" },
+            { speaker: "小海", target: "工讀生", text: "無糖綠太苦了吧" },
+            { speaker: "工讀生", target: "小海", text: "習慣就好 喝久了就覺得甜的很膩" },
+            { speaker: "橘子汽水", target: "小海", text: "那你喝什麼" },
+            { speaker: "小海", target: "橘子汽水", text: "我喝可樂 不喝茶" },
+            { speaker: "雨天", target: "小海", text: "可樂不健康吧" },
+            { speaker: "小海", target: "雨天", text: "我知道啊 但就是好喝" }
+        ]
+    },
+
+    {
+        id: "night_evening_3",
+        room: 2,
+        lines: [
+            { speaker: "雨天", text: "今天上班有夠累" },
+            { speaker: "MOMO", target: "雨天", text: "你不是學生嗎" },
+            { speaker: "雨天", target: "MOMO", text: "我打工啊" },
+            { speaker: "小海", target: "雨天", text: "辛苦了" },
+            { speaker: "雨天", target: "小海", text: "真的 好想辭職" },
+            { speaker: "工讀生", target: "雨天", text: "辭啊 我支持你" },
+            { speaker: "雨天", target: "工讀生", text: "可是辭了沒錢" },
+            { speaker: "工讀生", target: "雨天", text: "那就繼續做" },
+            { speaker: "雨天", target: "工讀生", text: "你好矛盾" },
+            { speaker: "工讀生", target: "雨天", text: "人生就是這樣" }
+        ]
+    },
+
+    {
+        id: "night_evening_4",
+        room: 2,
+        lines: [
+            { speaker: "MOMO", text: "我剛剛看到一個好笑的影片" },
+            { speaker: "小海", target: "MOMO", text: "貼來看看" },
+            { speaker: "MOMO", target: "小海", text: "這裡又不能貼連結" },
+            { speaker: "小海", target: "MOMO", text: "那你敘述一下" },
+            { speaker: "MOMO", target: "小海", text: "有一隻貓在紙箱裡睡覺，結果主人一拉紙箱貓彈起來" },
+            { speaker: "小海", target: "MOMO", text: "聽起來還好" },
+            { speaker: "雨天", target: "MOMO", text: "哈哈哈哈 我有看過那個 真的很好笑" },
+            { speaker: "MOMO", target: "雨天", text: "你看過對不對 我就說很好笑" },
+            { speaker: "小海", target: "MOMO", text: "好吧 你們笑點很低" }
+        ]
+    },
+
+    {
+        id: "night_evening_5",
+        room: 2,
+        lines: [
+            { speaker: "工讀生", target: "雨天", text: "你明天放假嗎" },
+            { speaker: "雨天", target: "工讀生", text: "對啊 終於可以睡到自然醒了" },
+            { speaker: "小海", target: "雨天", text: "羨慕 我明天還要早起" },
+            { speaker: "雨天", target: "小海", text: "你要幹嘛" },
+            { speaker: "小海", target: "雨天", text: "去學校" },
+            { speaker: "橘子汽水", target: "小海", text: "禮拜六去學校幹嘛" },
+            { speaker: "小海", target: "橘子汽水", text: "有活動" },
+            { speaker: "工讀生", target: "小海", text: "辛苦了" },
+            { speaker: "小海", target: "工讀生", text: "命苦" }
+        ]
+    },
+
+
+
+    {
+        id: "night_late_1",
+        room: 2,
+        lines: [
+            { speaker: "工讀生", text: "有人還沒睡嗎" },
+            { speaker: "雨天", target: "工讀生", text: "我" },
+            { speaker: "小海", target: "工讀生", text: "我也是" },
+            { speaker: "工讀生", target: "小海", text: "你們都不睡覺的喔" },
+            { speaker: "雨天", target: "工讀生", text: "睡不著" },
+            { speaker: "小海", target: "工讀生", text: "我剛打完遊戲 精神還很好" },
+            { speaker: "工讀生", target: "雨天", text: "明天不用上班嗎" },
+            { speaker: "雨天", target: "工讀生", text: "我放假" },
+            { speaker: "小海", target: "工讀生", text: "我不用上課" },
+            { speaker: "工讀生", target: "小海", text: "好吧 只有我一個人還要上班" },
+            { speaker: "雨天", target: "工讀生", text: "可憐" },
+            { speaker: "工讀生", target: "小海", text: "你們兩個可以早點睡嗎 不要讓我羨慕" }
+        ]
+    },
+
+    {
+        id: "night_late_2",
+        room: 2,
+        lines: [
+            { speaker: "MOMO", text: "半夜突然想吃東西" },
+            { speaker: "橘子汽水", target: "MOMO", text: "我也是" },
+            { speaker: "MOMO", target: "橘子汽水", text: "但現在不知道哪裡還有開" },
+            { speaker: "橘子汽水", target: "MOMO", text: "便利商店啊" },
+            { speaker: "MOMO", target: "橘子汽水", text: "我不想吃便利商店" },
+            { speaker: "橘子汽水", target: "MOMO", text: "那就餓吧" },
+            { speaker: "MOMO", target: "橘子汽水", text: "你怎麼這樣" },
+            { speaker: "橘子汽水", target: "MOMO", text: "不然你去煮泡麵" },
+            { speaker: "MOMO", target: "橘子汽水", text: "沒有泡麵" },
+            { speaker: "橘子汽水", target: "MOMO", text: "那你就繼續餓吧" }
+        ]
+    },
+
+    {
+        id: "night_late_3",
+        room: 2,
+        lines: [
+            { speaker: "工讀生", text: "夜貓城現在只剩我了嗎" },
+            { speaker: "雨天", target: "工讀生", text: "我也在" },
+            { speaker: "小海", target: "工讀生", text: "我也是" },
+            { speaker: "工讀生", target: "小海", text: "好吧 還以為大家都睡了" },
+            { speaker: "雨天", target: "工讀生", text: "再撐一下就要天亮了" },
+            { speaker: "工讀生", target: "雨天", text: "你該不會打算整晚不睡" },
+            { speaker: "雨天", target: "工讀生", text: "對啊 反正明天放假" },
+            { speaker: "小海", target: "工讀生", text: "我也是" },
+            { speaker: "工讀生", target: "小海", text: "我明天要上班 我先睡了 你們繼續熬" }
+        ]
+    },
+
+    {
+        id: "night_late_4",
+        room: 2,
+        lines: [
+            { speaker: "橘子汽水", text: "你們覺得明天會下雨嗎" },
+            { speaker: "MOMO", target: "橘子汽水", text: "不知道 我沒看氣象" },
+            { speaker: "小海", target: "橘子汽水", text: "應該不會吧 今天天氣不錯" },
+            { speaker: "橘子汽水", target: "小海", text: "但氣象說會" },
+            { speaker: "小海", target: "橘子汽水", text: "不要相信氣象" },
+            { speaker: "工讀生", target: "橘子汽水", text: "我倒是希望下雨 這樣明天可以晚點出門" },
+            { speaker: "橘子汽水", target: "工讀生", text: "你想得美 下雨跟晚起是兩回事" }
+        ]
+    },
+
+    {
+        id: "night_late_5",
+        room: 2,
+        lines: [
+            { speaker: "雨天", target: "小海", text: "你明天幾點要起床" },
+            { speaker: "小海", target: "雨天", text: "八點多吧" },
+            { speaker: "雨天", target: "小海", text: "那你現在還不睡" },
+            { speaker: "小海", target: "雨天", text: "還不想睡" },
+            { speaker: "工讀生", target: "小海", text: "你小心明天爬不起來" },
+            { speaker: "小海", target: "工讀生", text: "鬧鐘設多一點就好了" }
+        ]
+    },
+
+
+
+    {
+        id: "night_dead_1",
+        room: 2,
+        lines: [
+            { speaker: "工讀生", target: "雨天", text: "天快亮了" },
+            { speaker: "雨天", target: "工讀生", text: "對啊 我還沒睡" },
+            { speaker: "工讀生", target: "雨天", text: "你不打算睡嗎" },
+            { speaker: "雨天", target: "工讀生", text: "再過幾個小時就要出門了 乾脆不睡了" },
+            { speaker: "工讀生", target: "雨天", text: "那你等一下不會想睡嗎" },
+            { speaker: "雨天", target: "工讀生", text: "會啊 但撐過去就好了" },
+            { speaker: "工讀生", target: "雨天", text: "你這樣身體會壞掉" },
+            { speaker: "雨天", target: "工讀生", text: "反正年輕沒差" },
+            { speaker: "工讀生", target: "雨天", text: "你以後會後悔的" }
+        ]
+    },
+
+    {
+        id: "night_dead_2",
+        room: 2,
+        lines: [
+            { speaker: "小海", text: "有人還醒著嗎" },
+            { speaker: "小海", text: "好吧 我也要睡了" },
+            { speaker: "雨天", target: "小海", text: "我還在" },
+            { speaker: "小海", target: "雨天", text: "你幹嘛不早點回" },
+            { speaker: "雨天", target: "小海", text: "我剛剛在滑手機沒看到" },
+            { speaker: "小海", target: "雨天", text: "我都要睡了" },
+            { speaker: "雨天", target: "小海", text: "那晚安" },
+            { speaker: "小海", target: "雨天", text: "嗯 晚安" }
+        ]
+    },
+
+    {
+        id: "night_dead_3",
+        room: 2,
+        lines: [
+            { speaker: "MOMO", target: "橘子汽水", text: "我真的該睡了" },
+            { speaker: "橘子汽水", target: "MOMO", text: "你不是說再一下下就好" },
+            { speaker: "MOMO", target: "橘子汽水", text: "這次是真的" },
+            { speaker: "橘子汽水", target: "MOMO", text: "你每次都是真的 結果半小時後還在" },
+            { speaker: "MOMO", target: "橘子汽水", text: "明天真的要早起 不能再拖了" },
+            { speaker: "橘子汽水", target: "MOMO", text: "那你快去睡" },
+            { speaker: "MOMO", target: "橘子汽水", text: "好 晚安" },
+            { speaker: "MOMO", target: "橘子汽水", text: "啊 忘記關燈" },
+            { speaker: "橘子汽水", target: "MOMO", text: "……你還在" }
+        ]
+    },
+
+
+    {
+        id: "night_day_1",
+        room: 2,
+        lines: [
+            { speaker: "橘子汽水", text: "今天好無聊" },
+            { speaker: "雨天", target: "橘子汽水", text: "對啊 不知道要幹嘛" },
+            { speaker: "小海", target: "橘子汽水", text: "等一下要出門" },
+            { speaker: "橘子汽水", target: "小海", text: "去哪裡" },
+            { speaker: "小海", target: "橘子汽水", text: "買東西" },
+            { speaker: "雨天", target: "小海", text: "買什麼" },
+            { speaker: "小海", target: "雨天", text: "生活用品 洗髮精什麼的" },
+            { speaker: "橘子汽水", target: "小海", text: "聽起來好普通" },
+            { speaker: "小海", target: "橘子汽水", text: "不然你想要怎樣 去逛街嗎" },
+            { speaker: "橘子汽水", target: "小海", text: "好啊" },
+            { speaker: "小海", target: "橘子汽水", text: "那你自己去" }
+        ]
+    },
+
+    {
+        id: "night_day_2",
+        room: 2,
+        lines: [
+            { speaker: "MOMO", text: "剛起床 頭好暈" },
+            { speaker: "小海", target: "MOMO", text: "你昨天幾點睡" },
+            { speaker: "MOMO", target: "小海", text: "凌晨四點吧" },
+            { speaker: "小海", target: "MOMO", text: "難怪" },
+            { speaker: "MOMO", target: "小海", text: "我就睡不著嘛" },
+            { speaker: "雨天", target: "MOMO", text: "你昨天不是說要早點睡" },
+            { speaker: "MOMO", target: "雨天", text: "我本來真的打算早點睡的" },
+            { speaker: "橘子汽水", target: "MOMO", text: "結果呢" },
+            { speaker: "MOMO", target: "橘子汽水", text: "結果不小心看了一個影片 就天亮了" }
+        ]
+    },
+
+    {
+        id: "night_day_3",
+        room: 2,
+        lines: [
+            { speaker: "工讀生", text: "今天有人要出門嗎" },
+            { speaker: "雨天", target: "工讀生", text: "我等一下要出去" },
+            { speaker: "橘子汽水", target: "雨天", text: "去哪裡" },
+            { speaker: "雨天", target: "橘子汽水", text: "買東西" },
+            { speaker: "小海", target: "雨天", text: "你昨天不是才買過" },
+            { speaker: "雨天", target: "小海", text: "昨天買的是別的" },
+            { speaker: "工讀生", target: "雨天", text: "那你幫我買飲料" },
+            { speaker: "雨天", target: "工讀生", text: "你好意思" }
+        ]
+    },
+
+
+
+    {
+        id: "night_afternoon_1",
+        room: 2,
+        lines: [
+            { speaker: "雨天", text: "下午突然下大雨" },
+            { speaker: "MOMO", target: "雨天", text: "我這邊也是" },
+            { speaker: "橘子汽水", target: "雨天", text: "我今天沒帶傘" },
+            { speaker: "雨天", target: "橘子汽水", text: "那你慘了" },
+            { speaker: "工讀生", target: "橘子汽水", text: "我也是 只能等雨停" },
+            { speaker: "橘子汽水", target: "工讀生", text: "希望它趕快停" },
+            { speaker: "小海", target: "橘子汽水", text: "我看氣象說會下一整個下午" },
+            { speaker: "橘子汽水", target: "小海", text: "你不要嚇我" },
+            { speaker: "雨天", target: "橘子汽水", text: "你就慢慢等吧" },
+            { speaker: "橘子汽水", target: "雨天", text: "那我打電話叫我朋友來救我" }
+        ]
+    },
+
+    {
+        id: "night_afternoon_2",
+        room: 2,
+        lines: [
+            { speaker: "工讀生", text: "今天白天好安靜" },
+            { speaker: "橘子汽水", target: "工讀生", text: "大家都在上班上課啊" },
+            { speaker: "雨天", target: "工讀生", text: "對啊 只有我們這些閒人" },
+            { speaker: "小海", target: "工讀生", text: "我等等也要出門了" },
+            { speaker: "工讀生", target: "小海", text: "去哪裡" },
+            { speaker: "小海", target: "工讀生", text: "去學校" },
+            { speaker: "橘子汽水", target: "小海", text: "你不是說今天放假" },
+            { speaker: "小海", target: "橘子汽水", text: "臨時有事" },
+            { speaker: "工讀生", target: "小海", text: "辛苦你了" }
+        ]
+    },
+
+    {
+        id: "night_afternoon_3",
+        room: 2,
+        lines: [
+            { speaker: "橘子汽水", target: "小海", text: "你去學校要幹嘛" },
+            { speaker: "小海", target: "橘子汽水", text: "補課" },
+            { speaker: "MOMO", target: "小海", text: "你也太可憐了吧 週六還補課" },
+            { speaker: "小海", target: "MOMO", text: "老師臨時改時間 我也沒辦法" },
+            { speaker: "雨天", target: "小海", text: "那你幾點回來" },
+            { speaker: "小海", target: "雨天", text: "傍晚吧" },
+            { speaker: "橘子汽水", target: "小海", text: "等你回來再聊" }
+        ]
+    }
+
+];
+
+
+
+const chatDatabaseOld = [
+
+    {
+        id: "old_1",
+        room: 3,
+        lines: [
+            { speaker: "藍色星期天", text: "今天居然有人" },
+            { speaker: "阿葵", text: "好久沒看到新面孔了" }
+        ]
+    },
+
+    {
+        id: "old_2",
+        room: 3,
+        lines: [
+            { speaker: "阿葵", target: "藍色星期天", text: "你還記得以前這裡很熱鬧嗎" },
+            { speaker: "藍色星期天", target: "阿葵", text: "當然記得" }
+        ]
+    },
+
+    {
+        id: "old_3",
+        room: 3,
+        lines: [
+            { speaker: "藍色星期天", text: "人都散了" },
+            { speaker: "阿葵", text: "嗯……" }
+        ]
+    },
+
+    {
+        id: "old_4",
+        room: 3,
+        lines: [
+            { speaker: "藍色星期天", target: "阿葵", text: "你最近有看到其他人上線嗎" },
+            { speaker: "阿葵", target: "藍色星期天", text: "沒有 很久沒看到了" }
+        ]
+    },
+
+    {
+        id: "old_5",
+        room: 3,
+        lines: [
+            { speaker: "阿葵", text: "這裡越來越安靜了" },
+            { speaker: "藍色星期天", text: "習慣就好" }
+        ]
+    },
+
+    {
+        id: "old_6",
+        room: 3,
+        lines: [
+            { speaker: "藍色星期天", text: "以前半夜這裡還有人" },
+            { speaker: "阿葵", text: "現在已經不會了" }
+        ]
+    },
+
+    {
+        id: "old_7",
+        room: 3,
+        lines: [
+            { speaker: "藍色星期天", target: "阿葵", text: "你有留著以前的舊網址嗎" },
+            { speaker: "阿葵", target: "藍色星期天", text: "什麼舊網址" },
+            { speaker: "藍色星期天", target: "阿葵", text: "沒什麼，忘記了" },
+            { speaker: "阿葵", text: "……" }
+        ]
+    },
+
+    {
+        id: "old_8",
+        room: 3,
+        lines: [
+            { speaker: "藍色星期天", target: "阿葵", text: "你有跟其他人聯絡嗎" },
+            { speaker: "阿葵", target: "藍色星期天", text: "沒有 早就沒有了" }
+        ]
+    },
+
+    {
+        id: "old_9",
+        room: 3,
+        lines: [
+            { speaker: "阿葵", target: "藍色星期天", text: "你還記得以前的人嗎" },
+            { speaker: "藍色星期天", target: "阿葵", text: "記得一些 但不太清楚了" }
+        ]
+    },
+
+    {
+        id: "old_10",
+        room: 3,
+        lines: [
+            { speaker: "藍色星期天", target: "阿葵", text: "沒想到你還留在這裡" },
+            { speaker: "阿葵", target: "藍色星期天", text: "你也一樣啊" }
+        ]
+    },
+
+    {
+        id: "old_11",
+        room: 3,
+        lines: [
+            { speaker: "阿葵", text: "今天月亮很大" },
+            { speaker: "藍色星期天", text: "是喔 我沒注意" }
+        ]
+    },
+
+    {
+        id: "old_12",
+        room: 3,
+        lines: [
+            { speaker: "藍色星期天", target: "阿葵", text: "你有看到網路上有人在討論流光嗎" },
+            { speaker: "阿葵", target: "藍色星期天", text: "沒有 很久沒看到了" }
+        ]
+    },
+
+    {
+        id: "old_13",
+        room: 3,
+        lines: [
+            { speaker: "阿葵", text: "最近都沒什麼人" },
+            { speaker: "藍色星期天", text: "反正早就習慣了" }
+        ]
+    },
+
+    {
+        id: "old_14",
+        room: 3,
+        lines: [
+            { speaker: "藍色星期天", target: "阿葵", text: "你覺得流光還能撐多久" },
+            { speaker: "阿葵", target: "藍色星期天", text: "不知道 應該不會太久了吧" }
+        ]
+    },
+
+    {
+        id: "old_15",
+        room: 3,
+        lines: [
+            { speaker: "阿葵", target: "藍色星期天", text: "如果流光關了 你會去哪裡" },
+            { speaker: "藍色星期天", target: "阿葵", text: "不知道 可能就沒有了吧" }
+        ]
+    },
+
+    {
+        id: "old_16",
+        room: 3,
+        lines: [
+            { speaker: "藍色星期天", target: "阿葵", text: "你記得艾莉嗎" },
+            { speaker: "阿葵", target: "藍色星期天", text: "……記得" },
+            { speaker: "藍色星期天", target: "阿葵", text: "她也走了" },
+            { speaker: "阿葵", text: "嗯" }
+        ]
+    }
+
+];
+
+
+const playerTriggerResponses = [
+
+    {
+        keywords: ["嗨", "哈囉", "hello", "大家好", "安安", "晚安", "早安", "午安"],
+        responses: [
+            { speaker: "小麥", text: "嗨～" },
+            { speaker: "檸檬汽水", text: "哈囉" },
+            { speaker: "阿哲", text: "你好" },
+            { speaker: "小麥", text: "晚安啊" },
+            { speaker: "檸檬汽水", text: "早安～" }
+        ]
+    },
+
+    // 第二類：問「有人在嗎」
+    {
+        keywords: ["有人在嗎", "有人嗎", "有人", "在嗎"],
+        responses: [
+            { speaker: "七喜", text: "有喔" },
+            { speaker: "阿哲", text: "我在" },
+            { speaker: "檸檬汽水", text: "怎麼了" }
+        ]
+    },
+
+    // 第三類：問「在聊什麼」
+    {
+        keywords: ["在聊什麼", "聊到哪", "現在在講什麼", "你們在聊"],
+        responses: [
+            { speaker: "檸檬汽水", text: "隨便聊啊" },
+            { speaker: "小麥", text: "在講晚餐" },
+            { speaker: "阿哲", text: "沒什麼" }
+        ]
+    },
+
+    // 第四類：天氣
+    {
+        keywords: ["好熱", "好冷", "下雨", "天氣", "颱風"],
+        responses: [
+            { speaker: "颱風天", text: "對啊今天真的很熱" },
+            { speaker: "小麥", text: "我這邊也在下雨" },
+            { speaker: "檸檬汽水", text: "對啊 好煩" }
+        ]
+    },
+
+    // 第五類：吃的
+    {
+        keywords: ["好餓", "午餐", "吃什麼", "晚餐", "宵夜", "雞排", "便當"],
+        responses: [
+            { speaker: "檸檬汽水", text: "我也好餓" },
+            { speaker: "七喜", text: "你中午吃什麼" },
+            { speaker: "小麥", text: "我想吃雞排" }
+        ]
+    },
+
+    // 第六類：心情／累
+    {
+        keywords: ["好累", "好煩", "好無聊", "累", "煩"],
+        responses: [
+            { speaker: "小麥", text: "我也是" },
+            { speaker: "阿哲", text: "辛苦了" },
+            { speaker: "檸檬汽水", text: "我今天也超累" }
+        ]
+    },
+
+    // 第七類：寵物
+    {
+        keywords: ["貓", "狗", "寵物", "柴犬", "領養"],
+        responses: [
+            { speaker: "七喜", text: "你有養寵物嗎" },
+            { speaker: "小麥", text: "我家也有一隻貓" },
+            { speaker: "檸檬汽水", text: "好可愛" }
+        ]
+    },
+
+    // 第八類：工作／學校
+    {
+        keywords: ["上班", "下班", "加班", "上課", "讀書", "考試"],
+        responses: [
+            { speaker: "阿哲", text: "你還在加班喔" },
+            { speaker: "小麥", text: "辛苦了" },
+            { speaker: "檸檬汽水", text: "我也好想下班" }
+        ]
+    },
+
+    {
+        keywords: ["這麼晚了", "還沒睡", "熬夜"],
+        responses: [
+            { speaker: "七喜", text: "對啊睡不著" },
+            { speaker: "小麥", text: "你也是嗎" },
+            { speaker: "阿哲", text: "熬夜不好" }
+        ]
+    }
+
+];
+
+
+
+const privateMessages = [];
+
 
 function loginUnavailable() {
 
@@ -3567,16 +3351,8 @@ function enterGuest() {
             "guest-name"
         );
 
-    const genderInput =
-        document.getElementById(
-            "guest-gender"
-        );
-
     const name =
         nameInput.value.trim();
-
-    const gender =
-        genderInput.value;
 
     if (name === "") {
 
@@ -3588,19 +3364,7 @@ function enterGuest() {
 
     }
 
-    if (gender === "") {
-
-        alert(
-            "請選擇性別。"
-        );
-
-        return;
-
-    }
-
-    currentUser = name;
-
-    currentGender = gender;
+    currentUser = "訪客_" + name;
 
     hasEnteredChat = true;
 
@@ -3612,37 +3376,27 @@ function enterGuest() {
         "chat-screen"
     ).style.display = "flex";
 
-    // 訪客計數器 +1
-    let visitorCount = parseInt(localStorage.getItem('visitorCount') || '0');
-    visitorCount++;
-    localStorage.setItem('visitorCount', visitorCount);
-    document.getElementById('visitor-count-display').textContent = visitorCount;
+    initializeRooms();
 
-    // 顯示歡迎訊息
     const welcomeMessage = {
         type: "system",
-        text: "歡迎 " + currentUser + " 進入聊天室"
+        welcome: true,
+        user: currentUser,
+        time: getCurrentTime()
     };
 
-    // 加入當前房間的訊息中
-    roomMessages[currentRoom].push(welcomeMessage);
-
-    initializeRooms();
+    addMessageToScreen(
+        currentRoom,
+        welcomeMessage
+    );
 
 }
 
 
-/* ========================================
-   初始化聊天室
-======================================== */
 
 function initializeRooms() {
 
     currentRoom = 1;
-
-    // 初始化計數器顯示
-    let visitorCount = parseInt(localStorage.getItem('visitorCount') || '0');
-    document.getElementById('visitor-count-display').textContent = visitorCount;
 
     for (
         let roomNumber = 1;
@@ -3656,7 +3410,27 @@ function initializeRooms() {
             roomNumber
         ].clear();
 
+        onlineVisitors[roomNumber] = [];
+
+        if (visitorTimers[roomNumber] !== null) {
+            clearTimeout(visitorTimers[roomNumber]);
+            visitorTimers[roomNumber] = null;
+        }
+
     }
+
+    if (visitors[1] && visitors[1].length > 0) {
+        const shuffled = [...visitors[1]].sort(() => Math.random() - 0.5);
+        const presetCount = Math.min(
+            Math.floor(Math.random() * 8) + 8,
+            shuffled.length
+        );
+        for (let i = 0; i < presetCount; i++) {
+            onlineVisitors[1].push(shuffled[i]);
+        }
+    }
+
+    document.getElementById("roomSelect").value = "1";
 
     renderRoom();
 
@@ -3668,31 +3442,28 @@ function initializeRooms() {
 
         startLiveChat();
 
-        startPrivateMessages();
+        startVisitorMovement(1);
+
+        setTimeout(
+            function() {
+                triggerPlayerEnterGreeting();
+            },
+            Math.floor(Math.random() * 2000) + 3000
+        );
+
+
+        startScammerSystem();
 
     }
 
 }
 
 
-/* ========================================
-   顯示聊天室
-======================================== */
 
 function renderRoom() {
 
     const room =
         rooms[currentRoom];
-
-    document.getElementById(
-        "room-name"
-    ).textContent =
-        room.name;
-
-    document.getElementById(
-        "room-description"
-    ).textContent =
-        room.description;
 
     const container =
         document.getElementById(
@@ -3724,43 +3495,12 @@ function renderRoom() {
     container.scrollTop =
         container.scrollHeight;
 
-    const buttons =
-        document.querySelectorAll(
-            ".room-button"
-        );
-
-    buttons.forEach(
-        (
-            button,
-            index
-        ) => {
-
-            if (
-                index + 1 ===
-                currentRoom
-            ) {
-
-                button.classList.add(
-                    "active"
-                );
-
-            } else {
-
-                button.classList.remove(
-                    "active"
-                );
-
-            }
-
-        }
-    );
+    // 更新下拉選單的選取狀態
+    document.getElementById("roomSelect").value = String(currentRoom);
 
 }
 
 
-/* ========================================
-   建立訊息（包含冒號）
-======================================== */
 
 function createMessageElement(
     message
@@ -3790,24 +3530,195 @@ function createMessageElement(
     text.className =
         "message-text";
 
+    const currentAdmins = administrators[currentRoom] || [];
+    const isAdmin = currentAdmins.some(admin => admin.name === message.user && admin.online === true);
+
+    if (message.whisper && message.target) {
+
+        const isSender = message.user === currentUser;
+        const isReceiver = message.target === currentUser || message.target === message.user;
+
+        if (isSender || isReceiver) {
+
+            const whisperLabel =
+                document.createElement("span");
+
+            whisperLabel.className =
+                "whisper-label";
+
+            whisperLabel.textContent =
+                "【悄悄話】";
+
+            meta.appendChild(
+                whisperLabel
+            );
+
+            // 如果是在線管理員，在名字前面加上 GIF 和 【管理員】
+            if (isAdmin) {
+                const gif =
+                    document.createElement("img");
+                gif.className = "message-admin-gif";
+                gif.src = adminGif;
+                gif.alt = "";
+                meta.appendChild(gif);
+                const adminLabel =
+                    document.createElement("span");
+                adminLabel.style.color = "#ffd84d";
+                adminLabel.style.fontWeight = "bold";
+                adminLabel.textContent = "【管理員】";
+                meta.appendChild(adminLabel);
+            }
+
+            // 發送者
+            const sender =
+                document.createElement("span");
+
+            sender.className =
+                "message-user";
+
+            sender.textContent =
+                message.user;
+
+            meta.appendChild(
+                sender
+            );
+
+            // 箭頭
+            const arrow =
+                document.createElement("span");
+
+            arrow.className =
+                "whisper-arrow";
+
+            arrow.textContent =
+                " → ";
+
+            meta.appendChild(
+                arrow
+            );
+
+            // 接收者
+            const target =
+                document.createElement("span");
+
+            target.className =
+                "whisper-target";
+
+            // 如果是玩家自己，顯示「你」
+            if (message.target === currentUser) {
+                target.textContent = "你";
+            } else {
+                target.textContent = message.target;
+            }
+
+            meta.appendChild(
+                target
+            );
+
+            // 冒號
+            const colon =
+                document.createTextNode(
+                    "："
+                );
+
+            meta.appendChild(
+                colon
+            );
+
+            // 訊息內容
+            text.textContent =
+                message.text;
+
+            text.style.color =
+                message.color ||
+                "#ddd";
+
+            const time =
+                document.createElement("span");
+
+            time.className =
+                "message-time";
+
+            time.textContent =
+                `(${message.time || getCurrentTime()})`;
+
+            text.appendChild(time);
+
+            element.appendChild(
+                meta
+            );
+
+            element.appendChild(
+                text
+            );
+
+            return element;
+
+        } else {
+
+            const hidden =
+                document.createElement("div");
+
+            hidden.style.display =
+                "none";
+
+            return hidden;
+
+        }
+
+    }
+
+
+
     if (message.type === "system") {
 
-        // 系統訊息（綠色，置中）
         element.className =
             "message message-system";
 
-        text.textContent =
-            message.text;
+        if (message.welcome) {
 
-        text.style.color =
-            "#66cc66";
+            const welcomeName =
+                document.createElement("span");
 
-        text.style.textAlign =
-            "center";
+            welcomeName.className =
+                "welcome-name";
 
-        element.appendChild(
-            text
-        );
+            welcomeName.textContent =
+                message.user;
+
+            const welcomeMessage =
+                document.createElement("span");
+
+            welcomeMessage.className =
+                "welcome-text";
+
+            welcomeMessage.textContent =
+                " 歡迎進入聊天室";
+
+            const time =
+                document.createElement("span");
+
+            time.className =
+                "message-time";
+
+            time.textContent =
+                `(${message.time})`;
+
+            element.appendChild(welcomeName);
+            element.appendChild(welcomeMessage);
+            element.appendChild(time);
+
+        } else {
+
+            text.textContent =
+                message.text;
+
+            text.style.color =
+                "#888";
+
+            element.appendChild(text);
+
+        }
 
         return element;
     }
@@ -3831,6 +3742,16 @@ function createMessageElement(
         message.to
     ) {
 
+        // 如果是在線管理員，在名字前面加上 GIF
+        if (isAdmin) {
+            const gif =
+                document.createElement("img");
+            gif.className = "message-admin-gif";
+            gif.src = adminGif;
+            gif.alt = "";
+            meta.appendChild(gif);
+        }
+
         const from =
             document.createElement(
                 "span"
@@ -3838,6 +3759,15 @@ function createMessageElement(
 
         from.className =
             "message-user";
+
+        if (isAdmin) {
+            const adminLabel =
+                document.createElement("span");
+            adminLabel.style.color = "#ffd84d";
+            adminLabel.style.fontWeight = "bold";
+            adminLabel.textContent = "【管理員】";
+            meta.appendChild(adminLabel);
+        }
 
         from.textContent =
             message.from;
@@ -3876,7 +3806,6 @@ function createMessageElement(
             targetName
         );
 
-        // 加上冒號
         const colon =
             document.createTextNode(
                 "："
@@ -3890,6 +3819,15 @@ function createMessageElement(
 
     else {
 
+        if (isAdmin) {
+            const gif =
+                document.createElement("img");
+            gif.className = "message-admin-gif";
+            gif.src = adminGif;
+            gif.alt = "";
+            meta.appendChild(gif);
+        }
+
         const user =
             document.createElement(
                 "span"
@@ -3898,6 +3836,15 @@ function createMessageElement(
         user.className =
             "message-user";
 
+        if (isAdmin) {
+            const adminLabel =
+                document.createElement("span");
+            adminLabel.style.color = "#ffd84d";
+            adminLabel.style.fontWeight = "bold";
+            adminLabel.textContent = "【管理員】";
+            meta.appendChild(adminLabel);
+        }
+
         user.textContent =
             message.user;
 
@@ -3905,7 +3852,6 @@ function createMessageElement(
             user
         );
 
-        // 加上冒號
         const colon =
             document.createTextNode(
                 "："
@@ -3924,6 +3870,17 @@ function createMessageElement(
         message.color ||
         "#ddd";
 
+    const time =
+        document.createElement("span");
+
+    time.className =
+        "message-time";
+
+    time.textContent =
+        `(${message.time || getCurrentTime()})`;
+
+    text.appendChild(time);
+
     element.appendChild(
         meta
     );
@@ -3937,15 +3894,16 @@ function createMessageElement(
 }
 
 
-/* ========================================
-   顯示訊息
-======================================== */
 
 function addMessageToScreen(
     roomNumber,
     message,
     save = true
 ) {
+
+    if (!message.time) {
+        message.time = getCurrentTime();
+    }
 
     if (
         save
@@ -3982,26 +3940,47 @@ function addMessageToScreen(
         element
     );
 
-    container.scrollTop =
-        container.scrollHeight;
+    
+    const isAtBottom =
+        container.scrollHeight -
+        container.scrollTop -
+        container.clientHeight < 100;
+
+    if (isAtBottom) {
+        container.scrollTop =
+            container.scrollHeight;
+    }
 
 }
 
 
-/* ========================================
-   切換聊天室
-======================================== */
 
-function changeRoom(
-    roomNumber
-) {
+document.getElementById("roomSelect").addEventListener("change", function() {
 
-    currentRoom =
-        roomNumber;
+    const roomNumber = parseInt(this.value);
+
+    if (roomNumber === currentRoom) {
+        return;
+    }
+
+    currentRoom = roomNumber;
 
     renderRoom();
 
     renderMembers();
+
+    // 切換房間後顯示歡迎訊息
+    const welcomeMessage = {
+        type: "system",
+        welcome: true,
+        user: currentUser,
+        time: getCurrentTime()
+    };
+
+    addMessageToScreen(
+        currentRoom,
+        welcomeMessage
+    );
 
     // 切換房間後強制觸發一次自動聊天
     if (hasEnteredChat) {
@@ -4012,7 +3991,16 @@ function changeRoom(
         scheduleNextMessage();
     }
 
-}
+    if (roomNumber === 1) {
+        setTimeout(
+            function() {
+                triggerPlayerEnterGreeting();
+            },
+            Math.floor(Math.random() * 2000) + 3000
+        );
+    }
+
+});
 
 
 /* ========================================
@@ -4032,6 +4020,10 @@ function renderAdministrators() {
         administrators[
             currentRoom
         ];
+
+    if (!adminList || adminList.length === 0) {
+        return;
+    }
 
     adminList.forEach(
         admin => {
@@ -4099,7 +4091,7 @@ function renderAdministrators() {
 
 
 /* ========================================
-   成員
+   成員（包含線上訪客 + 玩家本人）
 ======================================== */
 
 function renderMembers() {
@@ -4113,168 +4105,129 @@ function renderMembers() {
 
     list.innerHTML = "";
 
-    const members =
-        rooms[
-            currentRoom
-        ].members;
-
-    const onlineMembers =
-        members.filter(
-            member =>
-                member[1] === true
-        );
-
-    createMemberGroup(
-        list,
-        "ONLINE",
-        onlineMembers
+    const adminNames = new Set(
+        (administrators[currentRoom] || []).map(
+            admin => admin.name
+        )
     );
 
-    const visitorNames =
-        visitors[
-            currentRoom
-        ];
+    const memberNames = (rooms[currentRoom]?.members || [])
+        .filter(member => member[1] === true)
+        .map(member => member[0])
+        .filter(name => !adminNames.has(name));
 
-    const visitorArray =
-        visitorNames.map(
-            name => [
-                "訪客_" + name,
-                true
-            ]
-        );
+    const visitorNames = onlineVisitors[currentRoom] || [];
 
-    createMemberGroup(
-        list,
-        "VISITOR",
-        visitorArray
-    );
+    const allNames = [];
 
-}
+    // 1. 先放會員
+    memberNames.forEach(name => {
+        if (!allNames.includes(name)) {
+            allNames.push(name);
+        }
+    });
 
-
-function createMemberGroup(
-    parent,
-    title,
-    memberArray
-) {
-
-    if (
-        memberArray.length === 0
-    ) {
-
-        return;
-
+    // 2. 再放玩家（固定在會員下面、訪客上面）
+    if (currentUser && !allNames.includes(currentUser)) {
+        allNames.push(currentUser);
     }
 
-    const group =
-        document.createElement(
-            "div"
-        );
-
-    group.className =
-        "member-group";
-
-    const groupTitle =
-        document.createElement(
-            "div"
-        );
-
-    groupTitle.className =
-        "member-group-title";
-
-    groupTitle.textContent =
-        title;
-
-    group.appendChild(
-        groupTitle
-    );
-
-    memberArray.forEach(
-        memberData => {
-
-            const member =
-                document.createElement(
-                    "div"
-                );
-
-            member.className =
-                "member";
-
-            const dot =
-                document.createElement(
-                    "span"
-                );
-
-            dot.className =
-                "status-dot " +
-                (
-                    memberData[1]
-                        ? "status-online"
-                        : "status-offline"
-                );
-
-            const name =
-                document.createElement(
-                    "span"
-                );
-
-            name.textContent =
-                memberData[0];
-
-            member.appendChild(
-                dot
-            );
-
-            member.appendChild(
-                name
-            );
-
-            member.addEventListener(
-                "click",
-                function() {
-
-                    memberClicked(
-                        memberData[0]
-                    );
-
-                }
-            );
-
-            group.appendChild(
-                member
-            );
-
+    // 3. 最後放訪客（按進入順序，排在玩家下面）
+    visitorNames.forEach(name => {
+        const visitorName = "訪客_" + name;
+        if (!allNames.includes(visitorName)) {
+            allNames.push(visitorName);
         }
-    );
+    });
 
-    parent.appendChild(
-        group
-    );
+    if (allNames.length === 0) {
+        const emptyMsg =
+            document.createElement("div");
+
+        emptyMsg.style.color = "#555";
+        emptyMsg.style.fontSize = "11px";
+        emptyMsg.style.padding = "8px 4px";
+        emptyMsg.textContent = "目前沒有在線成員";
+
+        list.appendChild(emptyMsg);
+        return;
+    }
+
+    allNames.forEach(name => {
+
+        const member =
+            document.createElement("div");
+
+        member.className = "member";
+
+        const dot =
+            document.createElement("span");
+
+        dot.className =
+            "status-dot status-online";
+
+        const nameElement =
+            document.createElement("span");
+
+        nameElement.textContent = name;
+        nameElement.style.color = "#ddd";
+
+        member.appendChild(dot);
+        member.appendChild(nameElement);
+
+        // 點擊成員名稱自動填入悄悄話對象
+        member.addEventListener(
+            "click",
+            function() {
+                const targetInput =
+                    document.getElementById(
+                        "whisper-target"
+                    );
+                let targetName = name;
+                if (name.startsWith("訪客_")) {
+                    targetName = name;
+                }
+                targetInput.value = targetName;
+                targetInput.classList.add("active");
+                targetInput.style.borderColor = "#ff6b6b";
+                document.getElementById(
+                    "message-input"
+                ).placeholder = `對 ${targetName} 說悄悄話……`;
+                targetInput.focus();
+            }
+        );
+
+        list.appendChild(member);
+
+    });
 
 }
 
 
 /* ========================================
-   點擊成員
+   清除悄悄話對象
 ======================================== */
 
-function memberClicked(
-    name
-) {
+document.getElementById(
+    "whisper-clear-btn"
+).addEventListener(
+    "click",
+    function() {
 
-    if (
-        name ===
-        "Airly"
-    ) {
+        const targetInput =
+            document.getElementById(
+                "whisper-target"
+            );
 
-        alert(
-            "Airly\n\n" +
-            "狀態：離線"
-        );
+        targetInput.value = "";
+        targetInput.classList.remove("active");
+        targetInput.style.borderColor = "";
+        document.getElementById(
+            "message-input"
+        ).placeholder = "輸入訊息...";
 
     }
-
-}
+);
 
 
 /* ========================================
@@ -4306,45 +4259,70 @@ function sendMessage() {
             )
             .value;
 
-    const playerMessage = {
-
-        user:
-            currentUser,
-
-        text:
-            messageText,
-
-        color:
-            color
-
-    };
-
-    addMessageToScreen(
-        currentRoom,
-        playerMessage
-    );
-
-    input.value = "";
-
-    input.focus();
-
-}
-
-
-/* ========================================
-   表情
-======================================== */
-
-function insertEmoji(
-    emoji
-) {
-
-    const input =
+    // 檢查是否有悄悄話對象
+    const target =
         document.getElementById(
-            "message-input"
+            "whisper-target"
+        ).value.trim();
+
+    if (target !== "") {
+
+        // 發送悄悄話
+        const whisperMessage = {
+
+            user:
+                currentUser,
+
+            text:
+                messageText,
+
+            color:
+                color,
+
+            target:
+                target,
+
+            whisper:
+                true
+
+        };
+
+        addMessageToScreen(
+            currentRoom,
+            whisperMessage
         );
 
-    input.value += emoji;
+        // 不清除對象欄，方便連續發送
+
+    } else {
+
+        // 發送一般訊息
+        const playerMessage = {
+
+            user:
+                currentUser,
+
+            text:
+                messageText,
+
+            color:
+                color
+
+        };
+
+        addMessageToScreen(
+            currentRoom,
+            playerMessage
+        );
+
+        // 觸發 NPC 回應（僅限 01，70% 機率）
+        if (currentRoom === 1 && Math.random() < 0.7) {
+            triggerNPCResponse(messageText);
+        }
+
+    }
+
+    input.value = "";
 
     input.focus();
 
@@ -4401,9 +4379,6 @@ document
     );
 
 
-/* ========================================
-   自動聊天
-======================================== */
 
 let liveChatTimer = null;
 
@@ -4443,11 +4418,12 @@ function scheduleNextMessage() {
 
     }
 
+    
     const delay =
         Math.floor(
             Math.random() *
-            9000
-        ) + 4000;
+            12000
+        ) + 8000;
 
     liveChatTimer =
         setTimeout(
@@ -4472,9 +4448,6 @@ function scheduleNextMessage() {
 }
 
 
-/* ========================================
-   找目前時段的 chatDatabase
-======================================== */
 
 function getChatDatabasePeriod() {
 
@@ -4540,9 +4513,6 @@ function getChatDatabasePeriod() {
 }
 
 
-/* ========================================
-   chatDatabase → 訊息
-======================================== */
 
 function playChatFragment(
     fragment
@@ -4558,9 +4528,17 @@ function playChatFragment(
 
     }
 
+    // 記錄開始播放時的房間號
+    const playingRoom = currentRoom;
+
     let index = 0;
 
     function nextLine() {
+
+        // 如果房間已經切換，停止播放
+        if (currentRoom !== playingRoom) {
+            return;
+        }
 
         if (
             index >=
@@ -4576,6 +4554,7 @@ function playChatFragment(
                 index
             ];
 
+        // 建立 message 物件時，user 永遠是 line.speaker
         const message = {
 
             user:
@@ -4591,8 +4570,13 @@ function playChatFragment(
 
         };
 
+        if (line.target) {
+            message.from = line.speaker;
+            message.to = line.target;
+        }
+
         addMessageToScreen(
-            currentRoom,
+            playingRoom,
             message
         );
 
@@ -4603,11 +4587,12 @@ function playChatFragment(
             fragment.lines.length
         ) {
 
+            // 放慢：每句間隔 3–7 秒
             const delay =
                 Math.floor(
                     Math.random() *
-                    3500
-                ) + 1800;
+                    4000
+                ) + 3000;
 
             setTimeout(
                 nextLine,
@@ -4623,9 +4608,6 @@ function playChatFragment(
 }
 
 
-/* ========================================
-   NPC 顏色
-======================================== */
 
 function getNPCColor(
     speaker
@@ -4634,18 +4616,18 @@ function getNPCColor(
     const colorMap = {
 
         "小麥": "#ffd84d",
-
         "阿哲": "#ffd84d",
-
         "檸檬汽水": "#d8899b",
-
         "颱風天": "#f27a3d",
-
         "左邊轉彎": "#b6a6d9",
-
         "七喜": "#ffd84d",
-
-        "小海": "#7fafc4"
+        "工讀生": "#7fafc4",
+        "雨天": "#ffd84d",
+        "MOMO": "#b6a6d9",
+        "小海": "#7fafc4",
+        "橘子汽水": "#f27a3d",
+        "藍色星期天": "#b6a6d9",
+        "阿葵": "#b6a6d9"
 
     };
 
@@ -4659,9 +4641,6 @@ function getNPCColor(
 }
 
 
-/* ========================================
-   自動訊息（含訪客發言）
-======================================== */
 
 function addAutomaticMessage() {
 
@@ -4669,52 +4648,54 @@ function addAutomaticMessage() {
         return;
     }
 
-    const period = getChatDatabasePeriod();
+    let roomFragments = [];
 
-    // 先從 NPC 資料庫選取
-    const databaseFragments = chatDatabase.filter(fragment => {
-
-        if (fragment.room !== currentRoom) {
+    if (currentRoom === 1) {
+        const period = getChatDatabasePeriod();
+        roomFragments = chatDatabase.filter(fragment => {
+            if (fragment.room !== 1) return false;
+            if (period === "morning") {
+                return fragment.id.startsWith("morning");
+            } else if (period === "day" || period === "noon") {
+                return fragment.id.startsWith("day");
+            } else if (period === "afternoon") {
+                return fragment.id.startsWith("afternoon") ||
+                       fragment.id.startsWith("day") ||
+                       fragment.id.startsWith("evening");
+            } else if (period === "evening") {
+                return fragment.id.startsWith("evening") ||
+                       fragment.id.startsWith("day_pet") ||
+                       fragment.id.startsWith("day_daily");
+            } else if (period === "late") {
+                return fragment.id.startsWith("late") ||
+                       fragment.id.startsWith("evening_snack") ||
+                       fragment.id.startsWith("evening_life");
+            } else if (period === "dead") {
+                return fragment.id.startsWith("dead");
+            }
             return false;
+        });
+    } else if (currentRoom === 2) {
+        roomFragments = chatDatabaseNight;
+    } else if (currentRoom === 3) {
+        // 03 只有晚上才有對話
+        const hour = new Date().getHours();
+        if (hour >= 18 && hour < 23) {
+            roomFragments = chatDatabaseOld;
+        } else {
+            roomFragments = [];
         }
+    }
 
-        if (period === "dead") {
-            return fragment.id.startsWith("dead");
-        }
-
-        return fragment.id.startsWith(period);
-    });
-
-    // 從訪客資料庫選取
-    const visitorFragments = visitorChatDatabase.filter(fragment => {
-        return fragment.room === currentRoom;
-    });
-
-    // 合併兩個資料庫（NPC + 訪客）
-    const allFragments = databaseFragments.concat(visitorFragments);
-
-    if (allFragments.length === 0) {
+    if (roomFragments.length === 0) {
         return;
     }
 
-    // 過濾已播放過的片段
-    const available = allFragments.filter(fragment => {
+    const available = roomFragments.filter(fragment => {
         return !shownAutomaticMessages[currentRoom].has(fragment.id);
     });
 
-    // 如果所有片段都已播放過，清空紀錄重新開始
     if (available.length === 0) {
-        shownAutomaticMessages[currentRoom].clear();
-        const resetAvailable = allFragments.filter(fragment => {
-            return !shownAutomaticMessages[currentRoom].has(fragment.id);
-        });
-        if (resetAvailable.length === 0) {
-            return;
-        }
-        const randomIndex = Math.floor(Math.random() * resetAvailable.length);
-        const selected = resetAvailable[randomIndex];
-        shownAutomaticMessages[currentRoom].add(selected.id);
-        playChatFragment(selected);
         return;
     }
 
@@ -4725,9 +4706,200 @@ function addAutomaticMessage() {
 }
 
 
-/* ========================================
-   時間
-======================================== */
+
+let playerGreetingCooldown = 0;
+
+function triggerPlayerEnterGreeting() {
+
+    if (!hasEnteredChat) return;
+    if (currentRoom !== 1) return;
+
+    const now = Date.now();
+    if (now - playerGreetingCooldown < 60000) return;
+
+    const greetings = [
+        { speaker: "小麥", text: "啊 有新面孔" },
+        { speaker: "檸檬汽水", text: "你好啊" },
+        { speaker: "阿哲", text: "嗨" },
+        { speaker: "小麥", text: "歡迎" },
+        { speaker: "七喜", text: "你好" },
+        { speaker: "檸檬汽水", text: "哈囉～" }
+    ];
+
+    const count = Math.random() < 0.4 ? 2 : 1;
+    const shuffled = greetings.sort(() => Math.random() - 0.5);
+    const selected = shuffled.slice(0, count);
+
+    const playingRoom = currentRoom;
+
+    selected.forEach((g, index) => {
+        const delay = index * 1500 + Math.floor(Math.random() * 1000) + 1500;
+        setTimeout(() => {
+            if (currentRoom !== playingRoom) return;
+            const message = {
+                user: g.speaker,
+                text: g.text,
+                color: getNPCColor(g.speaker)
+            };
+            addMessageToScreen(playingRoom, message);
+        }, delay);
+    });
+
+    playerGreetingCooldown = now;
+
+}
+
+
+
+let lastNPCResponseTime = 0;
+
+function triggerNPCResponse(playerText) {
+
+    if (!hasEnteredChat) return;
+    if (currentRoom !== 1) return;
+
+    const now = Date.now();
+    if (now - lastNPCResponseTime < 8000) return;
+
+    const lowerText = playerText.toLowerCase();
+
+    let matchedResponse = null;
+
+    for (const category of playerTriggerResponses) {
+        for (const keyword of category.keywords) {
+            if (lowerText.includes(keyword)) {
+                matchedResponse = category.responses;
+                break;
+            }
+        }
+        if (matchedResponse) break;
+    }
+
+    if (!matchedResponse) {
+        matchedResponse = [
+            { speaker: "小麥", text: "哈哈" },
+            { speaker: "阿哲", text: "嗯" },
+            { speaker: "檸檬汽水", text: "真的假的" },
+            { speaker: "七喜", text: "這樣啊" }
+        ];
+    }
+
+    const chosen = matchedResponse[Math.floor(Math.random() * matchedResponse.length)];
+    const playingRoom = currentRoom;
+
+    const delay = Math.floor(Math.random() * 3000) + 2000;
+
+    setTimeout(() => {
+        if (currentRoom !== playingRoom) return;
+        const message = {
+            user: chosen.speaker,
+            text: chosen.text,
+            color: getNPCColor(chosen.speaker)
+        };
+        addMessageToScreen(playingRoom, message);
+        lastNPCResponseTime = Date.now();
+    }, delay);
+
+}
+
+
+
+let scammerTimer = null;
+
+function startScammerSystem() {
+
+    if (scammerTimer !== null) {
+        clearTimeout(scammerTimer);
+        scammerTimer = null;
+    }
+
+    scheduleScammer();
+
+}
+
+
+function scheduleScammer() {
+
+    if (!hasEnteredChat) return;
+
+    // 隨機間隔 60–180 秒
+    const delay = Math.floor(Math.random() * 120000) + 60000;
+
+    scammerTimer = setTimeout(
+        function() {
+
+            if (!hasEnteredChat) {
+                return;
+            }
+
+            triggerScammer();
+            scheduleScammer();
+
+        },
+        delay
+    );
+
+}
+
+
+function triggerScammer() {
+
+    // 從三個聊天室中隨機選一個，但 03 出現機率較低
+    let roomPool = [1, 2];
+    if (Math.random() < 0.2) {
+        roomPool.push(3);
+    }
+
+    const targetRoom = roomPool[Math.floor(Math.random() * roomPool.length)];
+
+    // 如果目標房間不是當前房間，就不顯示（玩家看不到）
+    if (targetRoom !== currentRoom) {
+        return;
+    }
+
+    // 隨機選一個詐騙訊息
+    const scammer = scammerMessages[Math.floor(Math.random() * scammerMessages.length)];
+
+    // 顯示詐騙訊息
+    const scamMessage = {
+        user: scammer.name,
+        text: scammer.text,
+        color: "#ff6b6b"
+    };
+
+    addMessageToScreen(
+        targetRoom,
+        scamMessage
+    );
+
+    // 2–3 秒後管理員踢出
+    const delay = Math.floor(Math.random() * 1000) + 2000;
+
+    setTimeout(
+        function() {
+
+            if (targetRoom !== currentRoom) {
+                return;
+            }
+
+            // 顯示被踢出的系統訊息
+            const kickMessage = {
+                type: "system",
+                text: scammer.name + " 已違反規定，被管理員移出聊天室。"
+            };
+
+            addMessageToScreen(
+                targetRoom,
+                kickMessage
+            );
+
+        },
+        delay
+    );
+
+}
+
+
 
 function getTimePeriod() {
 
@@ -4763,124 +4935,162 @@ function getCurrentTime() {
 }
 
 
-/* ========================================
-   私訊
-======================================== */
 
 let privateTimer = null;
 
 
 function startPrivateMessages() {
 
-    if (
-        privateTimer !== null
-    ) {
-
-        clearTimeout(
-            privateTimer
-        );
-
-    }
-
-    if (
-        !hasEnteredChat
-    ) {
-
-        return;
-
-    }
-
-    const delay =
-        Math.floor(
-            Math.random() *
-            15000
-        ) + 10000;
-
-    privateTimer =
-        setTimeout(
-            function() {
-
-                if (
-                    !hasEnteredChat
-                ) {
-
-                    return;
-
-                }
-
-                showPrivateMessage();
-
-            },
-            delay
-        );
+    // 私訊已停用，因為 privateMessages 已清空
+    return;
 
 }
 
 
 function showPrivateMessage() {
 
-    if (
-        !hasEnteredChat
-    ) {
-
-        return;
-
-    }
-
-    const list =
-        privateMessages[
-            currentGender
-        ];
-
-    if (
-        !list ||
-        list.length === 0
-    ) {
-
-        return;
-
-    }
-
-    const randomIndex =
-        Math.floor(
-            Math.random() *
-            list.length
-        );
-
-    const selected =
-        list[
-            randomIndex
-        ];
-
-    const message = {
-
-        type:
-            "private",
-
-        user:
-            selected.user,
-
-        text:
-            selected.text,
-
-        color:
-            "#c5ab9f"
-
-    };
-
-    addMessageToScreen(
-        currentRoom,
-        message
-    );
-
-    startPrivateMessages();
+    return;
 
 }
 
 
-/* ========================================
-   初始化輸入文字顏色
-======================================== */
+function startVisitorMovement(roomNumber) {
+
+    if (visitorTimers[roomNumber] !== null) {
+        clearTimeout(visitorTimers[roomNumber]);
+        visitorTimers[roomNumber] = null;
+    }
+
+    if (roomNumber !== 1) {
+        return;
+    }
+
+    scheduleVisitorAction(roomNumber);
+
+}
+
+
+function scheduleVisitorAction(roomNumber) {
+
+    if (!hasEnteredChat) {
+        return;
+    }
+
+    const onlineList = onlineVisitors[roomNumber] || [];
+    const allVisitors = visitors[roomNumber] || [];
+    const availableToEnter = allVisitors.filter(name => !onlineList.includes(name));
+
+    let action = "enter";
+    let delay = 0;
+
+    if (availableToEnter.length === 0) {
+        action = "leave";
+        delay = Math.floor(Math.random() * 8000) + 5000;
+    } else if (onlineList.length === 0) {
+        action = "enter";
+        delay = Math.floor(Math.random() * 8000) + 4000;
+    } else {
+        const r = Math.random();
+        if (r < 0.55) {
+            action = "enter";
+            delay = Math.floor(Math.random() * 20000) + 15000; // 15–35 秒
+        } else {
+            action = "leave";
+            delay = Math.floor(Math.random() * 35000) + 25000; // 25–60 秒
+        }
+    }
+
+    visitorTimers[roomNumber] = setTimeout(
+        function() {
+
+            if (!hasEnteredChat) {
+                return;
+            }
+
+            if (action === "enter") {
+                const count = Math.random() < 0.2 ? 3 : (Math.random() < 0.4 ? 2 : 1);
+                for (let i = 0; i < count; i++) {
+                    addVisitor(roomNumber);
+                }
+            } else {
+                const count = Math.random() < 0.3 ? 2 : 1;
+                for (let i = 0; i < count; i++) {
+                    removeVisitor(roomNumber);
+                }
+            }
+
+            scheduleVisitorAction(roomNumber);
+
+        },
+        delay
+    );
+
+}
+
+
+function addVisitor(roomNumber) {
+
+    const allVisitors = visitors[roomNumber] || [];
+    const onlineList = onlineVisitors[roomNumber] || [];
+
+    const available = allVisitors.filter(name => !onlineList.includes(name));
+
+    if (available.length === 0) {
+        return;
+    }
+
+    const randomIndex = Math.floor(Math.random() * available.length);
+    const name = available[randomIndex];
+
+    onlineVisitors[roomNumber].push(name);
+
+    const message = {
+        type: "system",
+        text: "訪客_" + name + " 歡迎進入聊天室"
+    };
+
+    addMessageToScreen(
+        roomNumber,
+        message
+    );
+
+    if (roomNumber === currentRoom) {
+        renderMembers();
+    }
+
+}
+
+
+function removeVisitor(roomNumber) {
+
+    const onlineList = onlineVisitors[roomNumber] || [];
+
+    if (onlineList.length === 0) {
+        return;
+    }
+
+    const randomIndex = Math.floor(Math.random() * onlineList.length);
+    const name = onlineList[randomIndex];
+
+    onlineVisitors[roomNumber] = onlineList.filter(n => n !== name);
+
+    const message = {
+        type: "system",
+        text: "訪客_" + name + " 離開了聊天室"
+    };
+
+    addMessageToScreen(
+        roomNumber,
+        message
+    );
+
+    if (roomNumber === currentRoom) {
+        renderMembers();
+    }
+
+}
+
+
 
 document
     .getElementById(
@@ -4892,13 +5102,6 @@ document
             "text-color"
         )
         .value;
-
-
-// 頁面載入時初始化計數器
-document.addEventListener('DOMContentLoaded', function() {
-    let visitorCount = parseInt(localStorage.getItem('visitorCount') || '0');
-    document.getElementById('visitor-count-display').textContent = visitorCount;
-});
 
 
 </script>
