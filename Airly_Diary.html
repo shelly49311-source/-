@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Airly's Diary</title>
+    <style>
+        /* =========================================================
+           復古字體設定
+           ========================================================= */
+        html, body {
+            margin: 0;
+            padding: 0;
+            min-height: 100%;
+        }
+        body {
+            background-color: #d8dfcf;
+            color: #4b4b4b;
+            font-family: Georgia, "Times New Roman", "新細明體", "PMingLiU", serif;
+            background-image: radial-gradient(#b9c7b0 0.7px, transparent 0.7px);
+            background-size: 12px 12px;
+            cursor: url('https://cdn.cursors-4u.net/previews/flower-63-fe291f34-32.webp') 32 32, auto !important;
+        }
+        * { box-sizing: border-box; }
+        a { color: #66855d; text-decoration: none; }
+        a:hover { color: #4d6f45; text-decoration: underline; }
+        button {
+            cursor: url('https://cdn.cursors-4u.net/previews/flower-63-fe291f34-32.webp') 32 32, auto !important;
+            font-family: Georgia, "Times New Roman", "新細明體", serif;
+        }
+
+        .wrapper {
+            width: 920px;
+            margin: 35px auto 40px auto;
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            position: relative;
+        }
+
+        /* =========================================================
+           左側
+           ========================================================= */
+        .sidebar {
+            width: 205px;
+            flex-shrink: 0;
+            text-align: center;
+            background: rgba(249, 250, 242, 0.88);
+            border: 1px solid #aab9a1;
+            border-radius: 5px;
+            padding: 18px 12px 20px 12px;
+            box-shadow: 2px 3px 0 rgba(100, 120, 95, 0.12);
+            position: relative;
+        }
+        .sidebar::before { content: "♡"; position: absolute; top: 5px; left: 8px; color: #91a98b; font-size: 13px; }
+        .sidebar::after { content: "✿"; position: absolute; bottom: 5px; right: 8px; color: #91a98b; font-size: 12px; }
+
+        .avatar {
+            width: 150px;
+            margin: 0 auto 8px auto;
+            position: relative;
+        }
+        .avatar img {
+            width: 150px; height: 150px;
+            object-fit: cover;
+            display: block;
+            border: 2px solid #879d7f;
+            padding: 3px;
+            background: #f8faf4;
+            border-radius: 3px;
+            filter: contrast(0.93) saturate(0.78);
+        }
+        .avatar .name {
+            margin-top: 7px;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 18px;
+            font-weight: bold;
+            color: #5c7756;
+            letter-spacing: 2px;
+        }
+
+        .side-note {
+            margin: 8px 5px 12px 5px;
+            color: #899985;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 11px;
+            line-height: 1.6;
+            white-space: pre-line;
+        }
+
+        .nav-title {
+            margin-top: 14px;
+            margin-bottom: 6px;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 15px;
+            font-style: italic;
+            letter-spacing: 2px;
+            color: #7a8f76;
+            border-bottom: 1px dotted #c4d0be;
+            padding-bottom: 4px;
+        }
+
+        .categories-title {
+            margin-top: 18px;
+            margin-bottom: 4px;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 15px;
+            font-style: italic;
+            letter-spacing: 2px;
+            color: #7a8f76;
+            border-bottom: 1px dotted #c4d0be;
+            padding-bottom: 4px;
+        }
+
+        .menu { margin-top: 4px; }
+        .menu .nav-item {
+            display: block;
+            width: 100%;
+            padding: 5px 0;
+            margin: 2px 0;
+            border: none;
+            border-radius: 3px;
+            background: transparent;
+            color: #5d6f59;
+            font-family: Georgia, "Times New Roman", "新細明體", serif;
+            font-size: 13px;
+            text-align: center;
+            transition: background 0.2s, color 0.2s;
+        }
+        .menu .nav-item:hover { background: #d8dfcf; color: #4a6f44; }
+        .menu .nav-item.active { background: #4a6f44; color: #f8faf4; }
+
+        .gif-side { margin-top: 15px; text-align: center; }
+        .gif-side img { display: block; width: auto; height: auto; max-width: 100%; margin: 0 auto; }
+        .white-cat { margin-top: 13px; max-width: 100%; }
+
+        /* =========================================================
+           右側
+           ========================================================= */
+        .main {
+            width: 697px;
+            min-height: 500px;
+            position: relative;
+            background: rgba(252, 252, 246, 0.94);
+            border: 1px solid #9eaf97;
+            padding: 18px 24px 20px 24px;
+            box-shadow: 3px 4px 0 rgba(100, 120, 95, 0.13);
+            overflow: hidden;
+        }
+
+        .blog-top {
+            position: relative;
+            min-height: 65px;
+            margin-bottom: 8px;
+            border-bottom: 1px dashed #bac7b4;
+        }
+        .blog-title {
+            padding-top: 4px;
+            font-family: Georgia, "Times New Roman", "新細明體", serif;
+            font-size: 22px;
+            font-weight: normal;
+            letter-spacing: 1px;
+            color: #557451;
+        }
+        .blog-subtitle {
+            margin-top: 2px;
+            color: #9aab95;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        .black-cat {
+            position: absolute;
+            right: 5px;
+            bottom: -4px;
+            z-index: 3;
+            width: auto;
+            height: auto;
+            max-width: 100px;
+        }
+
+        /* =========================================================
+           文章列表
+           ========================================================= */
+        #postList { position: relative; }
+
+        .blog-post {
+            position: relative;
+            margin-bottom: 21px;
+            padding-bottom: 16px;
+            border-bottom: 1px dashed #cbd4c6;
+        }
+        .blog-post:last-child { border-bottom: none; }
+
+        .post-header {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            margin-bottom: 2px;
+        }
+        .post-title {
+            color: #607d5a;
+            font-family: Georgia, "Times New Roman", "新細明體", serif;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .post-date {
+            color: #a0aa9d;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 11px;
+            white-space: nowrap;
+        }
+
+        .post-category-tag {
+            display: inline-block;
+            margin-top: 1px;
+            margin-bottom: 5px;
+            padding: 1px 6px;
+            color: #83967d;
+            background: #eef2e9;
+            border: 1px solid #c8d2c2;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 10px;
+            line-height: 15px;
+        }
+
+        .post-divider {
+            border: 0;
+            border-top: 1px dotted #d1d8cd;
+            margin: 3px 0 8px 0;
+        }
+
+        .post-preview {
+            font-family: Georgia, "Times New Roman", "新細明體", serif;
+            font-size: 13px;
+            line-height: 1.85;
+            color: #4d4d4d;
+        }
+        .post-preview p { margin: 0 0 7px 0; }
+
+        .post-control {
+            margin-top: 4px;
+            text-align: right;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 11px;
+        }
+        .more-link {
+            color: #809779;
+            cursor: pointer;
+            border-bottom: 1px dotted transparent;
+        }
+        .more-link:hover { color: #557451; border-bottom-color: #8da187; }
+
+        /* =========================================================
+           文章完整內容
+           ========================================================= */
+        #articleView {
+            display: none;
+        }
+        #articleView .article-title {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 22px;
+            color: #4a6f44;
+            margin-bottom: 4px;
+        }
+        #articleView .article-date {
+            color: #a0aa9d;
+            font-size: 12px;
+            margin-bottom: 16px;
+            display: block;
+        }
+        #articleView .article-body {
+            font-family: Georgia, "Times New Roman", "新細明體", serif;
+            font-size: 14px;
+            line-height: 1.9;
+            color: #4d4d4d;
+        }
+        #articleView .article-body p { margin: 0 0 10px 0; }
+        #articleView .article-body .signature {
+            margin-top: 14px;
+            color: #698364;
+            font-family: Georgia, "Times New Roman", serif;
+            text-align: right;
+        }
+        #articleView .back-to-list {
+            display: inline-block;
+            margin-top: 16px;
+            color: #66855d;
+            font-size: 13px;
+            cursor: pointer;
+            border-bottom: 1px dotted #bccbb2;
+            padding-bottom: 2px;
+        }
+        #articleView .back-to-list:hover { color: #4d6f45; border-bottom-color: #4d6f45; }
+
+        /* =========================================================
+           相簿（膠片感）
+           ========================================================= */
+        #albumView {
+            display: none;
+        }
+        #albumView .album-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 18px;
+            margin-bottom: 10px;
+        }
+        #albumView .album-item {
+            background: #f5f0e8;
+            padding: 6px 6px 10px 6px;
+            box-shadow: 1px 2px 6px rgba(80, 70, 60, 0.15), 0 0 0 1px rgba(200, 190, 180, 0.3) inset;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            border-radius: 2px;
+            position: relative;
+        }
+        #albumView .album-item:hover {
+            transform: scale(1.03) rotate(-0.5deg);
+            box-shadow: 2px 4px 14px rgba(60, 50, 40, 0.25), 0 0 0 1px rgba(200, 190, 180, 0.4) inset;
+        }
+        #albumView .album-item img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            display: block;
+            filter: sepia(0.25) contrast(1.05) saturate(0.85) brightness(0.96);
+            transition: filter 0.3s ease;
+        }
+        #albumView .album-item:hover img {
+            filter: sepia(0.15) contrast(1.1) saturate(0.9) brightness(1.0);
+        }
+        #albumView .album-item::after {
+            content: "";
+            position: absolute;
+            inset: 6px 6px 10px 6px;
+            pointer-events: none;
+            z-index: 2;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="1" stitchTiles="stitch"/><feColorMatrix type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0.06 0"/></filter><rect width="100" height="100" filter="url(%23noise)" opacity="0.3"/></svg>');
+            background-size: 200px 200px;
+            opacity: 0.25;
+            mix-blend-mode: multiply;
+            border-radius: 1px;
+        }
+        #albumView .album-title {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 20px;
+            color: #4a6f44;
+            letter-spacing: 4px;
+            border-top: 1px dashed #bac7b4;
+            padding-top: 16px;
+            margin-top: 4px;
+            font-style: italic;
+        }
+        #albumView .album-back {
+            display: inline-block;
+            margin-top: 12px;
+            color: #66855d;
+            font-size: 13px;
+            cursor: pointer;
+            border-bottom: 1px dotted #bccbb2;
+            padding-bottom: 2px;
+        }
+        #albumView .album-back:hover { color: #4d6f45; border-bottom-color: #4d6f45; }
+
+        /* =========================================================
+           關於我
+           ========================================================= */
+        #aboutContent {
+            display: none;
+            padding: 10px 5px;
+            color: #4d4d4d;
+            font-size: 13px;
+            line-height: 1.9;
+            font-family: Georgia, "Times New Roman", "新細明體", serif;
+        }
+        #aboutContent .about-title {
+            display: inline-block;
+            padding: 4px 20px;
+            background: #d8dfcf;
+            border-radius: 50px;
+            color: #4a6f44;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+        #aboutContent .about-text { line-height: 2; }
+        #aboutContent .about-text p { margin: 0 0 7px 0; }
+        #aboutContent .about-text .sign {
+            display: block;
+            margin-top: 14px;
+            color: #698364;
+            font-family: Georgia, "Times New Roman", serif;
+            text-align: right;
+        }
+
+        /* =========================================================
+           留言板
+           ========================================================= */
+        #guestbookContent {
+            display: none;
+            padding: 10px 5px;
+            color: #4d4d4d;
+            font-size: 13px;
+            line-height: 1.9;
+            font-family: Georgia, "Times New Roman", "新細明體", serif;
+        }
+        #guestbookContent .guestbook-title {
+            display: inline-block;
+            padding: 4px 20px;
+            background: #d8dfcf;
+            border-radius: 50px;
+            color: #4a6f44;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+        .guestbook-form textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px 14px;
+            border: 1px solid #bccbb2;
+            background: #f8faf4;
+            font-family: Georgia, "Times New Roman", "新細明體", serif;
+            font-size: 13px;
+            color: #4d4d4d;
+            resize: vertical;
+            border-radius: 4px;
+        }
+        .guestbook-form .submit-btn {
+            margin-top: 8px;
+            padding: 4px 20px;
+            background: #eef2e9;
+            border: 1px solid #aab9a1;
+            color: #4a6f44;
+            font-family: Georgia, "Times New Roman", "新細明體", serif;
+            font-size: 13px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .guestbook-form .submit-btn:hover { background: #d8dfcf; }
+
+        /* =========================================================
+           矮人 + Footer
+           ========================================================= */
+        .dwarfs {
+            width: 100%;
+            margin-top: 5px;
+            margin-bottom: 2px;
+            text-align: center;
+        }
+        .dwarfs img { width: auto; height: auto; max-width: 100%; display: inline-block; }
+
+        .footer {
+            margin-top: 12px;
+            padding-top: 9px;
+            border-top: 1px dashed #cbd4c6;
+            color: #899985;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 11px;
+            line-height: 1.8;
+            text-align: center;
+        }
+        .footer a { color: #70866a; }
+        .footer a:hover { background: none; color: #506d4b; }
+
+        .fc2-counter {
+            position: absolute;
+            right: 10px;
+            bottom: 8px;
+            z-index: 20;
+            padding: 1px 4px;
+            background: rgba(252, 252, 246, 0.75);
+            color: #899985;
+            font-size: 10px;
+        }
+        .fc2-counter img { vertical-align: middle; }
+
+        .hidden { display: none !important; }
+
+        @media (max-width: 950px) {
+            body { padding: 10px 0; }
+            .wrapper { width: 920px; margin: 20px auto 30px auto; }
+            .main { min-height: 0; }
+            .fc2-counter { position: static; margin-top: 10px; text-align: center; }
+        }
+        @media (max-width: 500px) {
+            #albumView .album-grid {
+                gap: 12px;
+            }
+            #albumView .album-item {
+                padding: 4px 4px 8px 4px;
+            }
+            #albumView .album-item::after {
+                inset: 4px 4px 8px 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+
+    <!-- =====================================================
+         左側
+         ===================================================== -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="avatar">
+            <img src="https://raw.githubusercontent.com/shelly49311-source/-/refs/heads/main/images/dd4e1ea7daf88ec1f3714bd77bcc1912.jpg" alt="Airly">
+            <div class="name">Airly</div>
+        </div>
+
+        <div class="side-note">
+            Love of mine, someday you will die
+            But I'll be close behind and I'll follow you into the dark
+        </div>
+
+        <div class="nav-title">Navigate</div>
+        <div class="menu">
+            <button class="nav-item" id="aboutBtn">關於我</button>
+            <button class="nav-item" id="albumBtn">相簿</button>
+            <button class="nav-item" id="guestbookBtn">留言板</button>
+        </div>
+
+        <div class="categories-title">Categories</div>
+        <div class="menu">
+            <button class="nav-item active" data-category="all">All Logs</button>
+            <button class="nav-item" data-category="diary">Diary</button>
+            <button class="nav-item" data-category="murmur">Murmur</button>
+            <button class="nav-item" data-category="music">Music</button>
+            <button class="nav-item" data-category="movie">Movie</button>
+        </div>
+
+        <div class="gif-side white-cat">
+            <img src="https://raw.githubusercontent.com/shelly49311-source/-/refs/heads/main/images/Gif/KDS13.gif" alt="白貓">
+        </div>
+
+    </aside>
+
+    <!-- =====================================================
+         右側
+         ===================================================== -->
+    <main class="main" id="mainContent">
+
+        <!-- 標題區 -->
+        <div class="blog-top">
+            <div class="blog-title">Welcome to the 21st Century</div>
+            <div class="blog-subtitle">I don't know what to put here</div>
+            <img class="black-cat" src="https://raw.githubusercontent.com/shelly49311-source/-/refs/heads/main/images/Gif/KDS12.gif" alt="黑貓">
+        </div>
+
+        <!-- ===== 文章列表 ===== -->
+        <div id="postList">
+            <div class="blog-post" data-category="diary" data-article="article1">
+                <div class="post-header">
+                    <span class="post-title">最後一篇</span>
+                    <span class="post-date">2012.09.15</span>
+                </div>
+                <div class="post-category-tag">Diary</div>
+                <hr class="post-divider">
+                <div class="post-preview">
+                    <p>我已經很久沒有進聊天室了。<br>不是因為不想去，只是不知道該怎麼面對。</p>
+                </div>
+                <div class="post-control">
+                    <span class="more-link" data-article="article1">(More...)</span>
+                </div>
+            </div>
+
+            <div class="blog-post" data-category="diary" data-article="article2">
+                <div class="post-header">
+                    <span class="post-title">關於寧安</span>
+                    <span class="post-date">2012.07.03</span>
+                </div>
+                <div class="post-category-tag">Diary</div>
+                <hr class="post-divider">
+                <div class="post-preview">
+                    <p>她說我最近看起來很累。<br>我沒有多說什麼。</p>
+                </div>
+                <div class="post-control">
+                    <span class="more-link" data-article="article2">(More...)</span>
+                </div>
+            </div>
+
+            <div class="blog-post" data-category="diary" data-article="article3">
+                <div class="post-header">
+                    <span class="post-title">我確定了</span>
+                    <span class="post-date">2012.01.17</span>
+                </div>
+                <div class="post-category-tag">Diary</div>
+                <hr class="post-divider">
+                <div class="post-preview">
+                    <p>那個管理員利用聊天室引導會員去某個網站。</p>
+                </div>
+                <div class="post-control">
+                    <span class="more-link" data-article="article3">(More...)</span>
+                </div>
+            </div>
+
+            <div class="blog-post" data-category="diary" data-article="article4">
+                <div class="post-header">
+                    <span class="post-title">問了小麥</span>
+                    <span class="post-date">2011.09.12</span>
+                </div>
+                <div class="post-category-tag">Diary</div>
+                <hr class="post-divider">
+                <div class="post-preview">
+                    <p>我試著問小麥關於以前管理員的事。<br>她說她不太清楚。</p>
+                </div>
+                <div class="post-control">
+                    <span class="more-link" data-article="article4">(More...)</span>
+                </div>
+            </div>
+
+            <div class="blog-post" data-category="murmur" data-article="article5">
+                <div class="post-header">
+                    <span class="post-title">舊會員名單</span>
+                    <span class="post-date">2010.03.08</span>
+                </div>
+                <div class="post-category-tag">Murmur</div>
+                <hr class="post-divider">
+                <div class="post-preview">
+                    <p>有幾個帳號在 2005–2008 年間被踢出，<br>但紀錄上沒有寫理由。</p>
+                </div>
+                <div class="post-control">
+                    <span class="more-link" data-article="article5">(More...)</span>
+                </div>
+            </div>
+
+            <div class="blog-post" data-category="music" data-article="article6">
+                <div class="post-header">
+                    <span class="post-title">最近在聽的歌</span>
+                    <span class="post-date">2010.01.20</span>
+                </div>
+                <div class="post-category-tag">Music</div>
+                <hr class="post-divider">
+                <div class="post-preview">
+                    <p>旋律很輕，但歌詞讓人想哭。</p>
+                </div>
+                <div class="post-control">
+                    <span class="more-link" data-article="article6">(More...)</span>
+                </div>
+            </div>
+
+            <div class="blog-post" data-category="movie" data-article="article7">
+                <div class="post-header">
+                    <span class="post-title">最近看的電影</span>
+                    <span class="post-date">2009.11.02</span>
+                </div>
+                <div class="post-category-tag">Movie</div>
+                <hr class="post-divider">
+                <div class="post-preview">
+                    <p>昨天看了一部很安靜的電影。</p>
+                </div>
+                <div class="post-control">
+                    <span class="more-link" data-article="article7">(More...)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== 文章完整內容 ===== -->
+        <div id="articleView">
+            <div class="article-title" id="articleTitle"></div>
+            <span class="article-date" id="articleDate"></span>
+            <div class="article-body" id="articleBody"></div>
+            <span class="back-to-list" id="backToList">← All Logs</span>
+        </div>
+
+        <!-- ===== 相簿 ===== -->
+        <div id="albumView">
+            <div class="album-grid">
+                <div class="album-item"><img src="https://raw.githubusercontent.com/shelly49311-source/-/refs/heads/main/images/cat/01.jpg" alt="貓"></div>
+                <div class="album-item"><img src="https://raw.githubusercontent.com/shelly49311-source/-/refs/heads/main/images/cat/02.jpg" alt="貓"></div>
+                <div class="album-item"><img src="https://raw.githubusercontent.com/shelly49311-source/-/refs/heads/main/images/cat/03.jpeg" alt="貓"></div>
+                <div class="album-item"><img src="https://raw.githubusercontent.com/shelly49311-source/-/refs/heads/main/images/cat/04.jpeg" alt="貓"></div>
+                <div class="album-item"><img src="https://raw.githubusercontent.com/shelly49311-source/-/refs/heads/main/images/cat/05.jpeg" alt="貓"></div>
+                <div class="album-item"><img src="https://raw.githubusercontent.com/shelly49311-source/-/refs/heads/main/images/cat/06.jpeg" alt="貓"></div>
+                <div class="album-item"><img src="https://raw.githubusercontent.com/shelly49311-source/-/refs/heads/main/images/cat/07.jpeg" alt="貓"></div>
+                <div class="album-item"><img src="https://raw.githubusercontent.com/shelly49311-source/-/refs/heads/main/images/cat/08.jpeg" alt="貓"></div>
+                <div class="album-item"><img src="https://raw.githubusercontent.com/shelly49311-source/-/refs/heads/main/images/cat/09.jpeg" alt="貓"></div>
+            </div>
+            <div class="album-title">貓</div>
+            <span class="album-back" id="albumBack">← 回到日誌</span>
+        </div>
+
+        <!-- ===== 關於我 ===== -->
+        <div id="aboutContent">
+            <div class="about-title">About Me</div>
+            <div class="about-text">
+                <p>平平無奇大二生。<br>摩羯座。</p>
+                <p>樂團：Green Day、Grizzly Bear、Death Cab for Cutie<br>電影：《牯嶺街少年殺人事件》、《無人知曉》、《心之谷》、《告白》<br>電視：Twin Peaks、Lost、白色巨塔</p>
+                <span class="sign">♡ Airly</span>
+            </div>
+        </div>
+
+        <!-- ===== 留言板 ===== -->
+        <div id="guestbookContent">
+            <div class="guestbook-title">✉ Guestbook</div>
+            <div class="guestbook-form">
+                <textarea placeholder="寫點什麼吧…"></textarea>
+                <button class="submit-btn">送出留言</button>
+            </div>
+        </div>
+
+        <!-- ===== 矮人 ===== -->
+        <div class="dwarfs">
+            <img src="https://sakuradreams.neocities.org/Images/Disney/Snow_White/31.gif" alt="七位小矮人">
+        </div>
+
+        <!-- ===== Footer ===== -->
+        <div class="footer">
+            <div>© 2012 Toriiiia</div>
+        </div>
+
+        <div class="fc2-counter">
+            <script language="javascript" type="text/javascript" src="//counter1.fc2.com/views.php?id=41163366&main=1"></script>
+            <noscript><img src="//counter1.fc2.com/counter_now.php?id=41163366&main=1" alt="counter"></noscript>
+        </div>
+
+    </main>
+
+</div>
+
+<script>
+    // =========================================================
+    // 文章資料庫
+    // =========================================================
+    const articles = {
+        article1: {
+            title: '最後一篇',
+            date: '2012.09.15',
+            content: `
+                <p>我已經很久沒有進聊天室了。<br>不是因為不想去，只是不知道該怎麼面對。</p>
+                <p>這裡看起來還是一樣，但我已經不一樣了。</p>
+                <p>如果有人看到這篇，我想說：<br>這個聊天室曾經很好。<br>只是有些事，知道了就回不去了。</p>
+                <p class="signature">—— 艾莉</p>
+            `
+        },
+        article2: {
+            title: '關於寧安',
+            date: '2012.07.03',
+            content: `
+                <p>她說我最近看起來很累。<br>我沒有多說什麼。<br>有些事，不知道的人比較幸福。</p>
+                <p>寧安問我要不要再去占卜。<br>我說好。<br>也許只是想找個人陪。</p>
+            `
+        },
+        article3: {
+            title: '我確定了',
+            date: '2012.01.17',
+            content: `
+                <p>那個管理員利用聊天室引導會員去某個網站。<br>會員開始欠債之後，就被踢出聊天室。<br>當作什麼都沒發生過。</p>
+                <p>我確定至少有三個人是因為這樣消失的。<br>可是我沒有證據。</p>
+                <p>沒有證據，就什麼都改變不了。</p>
+            `
+        },
+        article4: {
+            title: '問了小麥',
+            date: '2011.09.12',
+            content: `
+                <p>我試著問小麥關於以前管理員的事。<br>她說她不太清楚，她來的時候那些人已經不在了。</p>
+                <p>她問我為什麼突然問這個。<br>我說沒有，只是好奇。</p>
+                <p>其實我知道得比她還多。<br>我只是不知道該怎麼說。</p>
+            `
+        },
+        article5: {
+            title: '舊會員名單',
+            date: '2010.03.08',
+            content: `
+                <p>今天整理舊會員名單，發現一個奇怪的現象。<br>有幾個帳號在 2005–2008 年間被踢出，<br>但紀錄上沒有寫理由。</p>
+                <p>我查了一下，發現這些帳號最後的私訊對象<br>都是同一個人。</p>
+                <p>這只是開始。<br>但我當時還不知道。</p>
+            `
+        },
+        article6: {
+            title: '最近在聽的歌',
+            date: '2010.01.20',
+            content: `
+                <p>旋律很輕，但歌詞讓人想哭。</p>
+                <p>也許只是因為最近太累了。</p>
+                <p style="color:#8a9f82; font-size:11px; margin-top:4px;">（這裡可以放 YouTube 嵌入）</p>
+            `
+        },
+        article7: {
+            title: '最近看的電影',
+            date: '2009.11.02',
+            content: `
+                <p>昨天看了一部很安靜的電影。<br>沒有太多對白，但看完之後想了很久。</p>
+                <p>有時候喜歡一部電影，<br>不是因為它說了什麼，<br>而是它讓你想起什麼。</p>
+            `
+        }
+    };
+
+    // =========================================================
+    // DOM 元素
+    // =========================================================
+    const postList = document.getElementById('postList');
+    const articleView = document.getElementById('articleView');
+    const albumView = document.getElementById('albumView');
+    const articleTitle = document.getElementById('articleTitle');
+    const articleDate = document.getElementById('articleDate');
+    const articleBody = document.getElementById('articleBody');
+    const backToList = document.getElementById('backToList');
+    const albumBack = document.getElementById('albumBack');
+
+    const aboutContent = document.getElementById('aboutContent');
+    const guestbookContent = document.getElementById('guestbookContent');
+    const navItems = document.querySelectorAll('.menu .nav-item[data-category]');
+    const posts = document.querySelectorAll('.blog-post');
+
+    // =========================================================
+    // 隱藏所有區塊
+    // =========================================================
+    function hideAll() {
+        postList.style.display = 'none';
+        articleView.style.display = 'none';
+        albumView.style.display = 'none';
+        aboutContent.style.display = 'none';
+        guestbookContent.style.display = 'none';
+    }
+
+    // =========================================================
+    // 顯示文章列表
+    // =========================================================
+    function showPostList() {
+        hideAll();
+        postList.style.display = 'block';
+        navItems.forEach(function(i) {
+            if (i.dataset.category === 'all') {
+                i.classList.add('active');
+            } else {
+                i.classList.remove('active');
+            }
+        });
+        posts.forEach(function(post) {
+            post.classList.remove('hidden');
+        });
+    }
+
+    // =========================================================
+    // 顯示文章完整內容
+    // =========================================================
+    function showArticle(articleId) {
+        const data = articles[articleId];
+        if (!data) return;
+
+        articleTitle.textContent = data.title;
+        articleDate.textContent = data.date;
+        articleBody.innerHTML = data.content;
+
+        hideAll();
+        articleView.style.display = 'block';
+        navItems.forEach(function(i) { i.classList.remove('active'); });
+    }
+
+    // =========================================================
+    // 顯示相簿
+    // =========================================================
+    function showAlbum() {
+        hideAll();
+        albumView.style.display = 'block';
+        navItems.forEach(function(i) { i.classList.remove('active'); });
+    }
+
+    // =========================================================
+    // 1. (More...) → 顯示文章全文
+    // =========================================================
+    document.querySelectorAll('.more-link').forEach(function(link) {
+        link.addEventListener('click', function() {
+            const articleId = this.dataset.article;
+            showArticle(articleId);
+        });
+    });
+
+    // =========================================================
+    // 2. ← All Logs → 回到文章列表
+    // =========================================================
+    backToList.addEventListener('click', showPostList);
+
+    // =========================================================
+    // 3. ← 回到日誌（從相簿返回）
+    // =========================================================
+    albumBack.addEventListener('click', showPostList);
+
+    // =========================================================
+    // 4. 分類篩選
+    // =========================================================
+    navItems.forEach(function(item) {
+        item.addEventListener('click', function() {
+            // 如果正在看文章或相簿，先回到列表
+            if (articleView.style.display === 'block' || albumView.style.display === 'block') {
+                showPostList();
+                // 延遲執行篩選，讓 DOM 更新
+                setTimeout(function() {
+                    applyFilter(item.dataset.category);
+                }, 10);
+                return;
+            }
+
+            navItems.forEach(function(i) { i.classList.remove('active'); });
+            this.classList.add('active');
+            applyFilter(this.dataset.category);
+        });
+    });
+
+    function applyFilter(category) {
+        posts.forEach(function(post) {
+            if (category === 'all') {
+                post.classList.remove('hidden');
+            } else if (post.dataset.category === category) {
+                post.classList.remove('hidden');
+            } else {
+                post.classList.add('hidden');
+            }
+        });
+    }
+
+    // =========================================================
+    // 5. 關於我
+    // =========================================================
+    document.getElementById('aboutBtn').addEventListener('click', function() {
+        hideAll();
+        aboutContent.style.display = 'block';
+        navItems.forEach(function(i) { i.classList.remove('active'); });
+    });
+
+    // =========================================================
+    // 6. 留言板
+    // =========================================================
+    document.getElementById('guestbookBtn').addEventListener('click', function() {
+        hideAll();
+        guestbookContent.style.display = 'block';
+        navItems.forEach(function(i) { i.classList.remove('active'); });
+    });
+
+    // =========================================================
+    // 7. 相簿
+    // =========================================================
+    document.getElementById('albumBtn').addEventListener('click', function() {
+        showAlbum();
+    });
+
+    // =========================================================
+    // 8. 手機觸碰：側欄透明
+    // =========================================================
+    const sidebar = document.getElementById('sidebar');
+    sidebar.addEventListener('touchstart', function() { this.classList.add('touched'); });
+    document.addEventListener('click', function(e) {
+        if (!sidebar.contains(e.target)) { sidebar.classList.remove('touched'); }
+    });
+</script>
+
+</body>
+</html>
